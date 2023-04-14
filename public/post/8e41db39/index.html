@@ -1,0 +1,1076 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>汇编语言 | 1!5!</title><meta name="keywords" content="汇编语言"><meta name="author" content="phrara"><meta name="copyright" content="phrara"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f8f5d6"><meta name="description" content="汇编知识汇编语言的组成   汇编指令：机器码的助记符，有对应的机器码   伪指令：为汇编过程提供控制信息，没有对应的机器码，计算机并不执行，编译器执行   其他符号：由编译器识别，没有对应的机器码  8086PC 内存地址分配8086PC 具有宽度为20的地址总线，宽度为16的数据总线 00000 ~ 9FFFF     主存储器RAM A0000 ~ BFFFF    显存地址 C0000 ~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汇编语言">
+<meta property="og:url" content="http://example.com/post/8e41db39/index.html">
+<meta property="og:site_name" content="1!5!">
+<meta property="og:description" content="汇编知识汇编语言的组成   汇编指令：机器码的助记符，有对应的机器码   伪指令：为汇编过程提供控制信息，没有对应的机器码，计算机并不执行，编译器执行   其他符号：由编译器识别，没有对应的机器码  8086PC 内存地址分配8086PC 具有宽度为20的地址总线，宽度为16的数据总线 00000 ~ 9FFFF     主存储器RAM A0000 ~ BFFFF    显存地址 C0000 ~">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/c4.png">
+<meta property="article:published_time" content="2022-09-08T13:27:48.000Z">
+<meta property="article:modified_time" content="2022-10-13T03:31:57.441Z">
+<meta property="article:author" content="phrara">
+<meta property="article:tag" content="汇编语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/c4.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/post/8e41db39/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '汇编语言',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-13 11:31:57'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f8f5d6')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/mouse.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://unpkg.zhimg.com/hexo-butterfly-clock/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/photo.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">13</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> Gifts</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/c4.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">1!5!</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> Gifts</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">汇编语言</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-09-08T13:27:48.000Z" title="Created 2022-09-08 21:27:48">2022-09-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-10-13T03:31:57.441Z" title="Updated 2022-10-13 11:31:57">2022-10-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%BA%95%E5%B1%82/">计算机底层</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="汇编语言"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="汇编知识"><a href="#汇编知识" class="headerlink" title="汇编知识"></a>汇编知识</h1><h4 id="汇编语言的组成"><a href="#汇编语言的组成" class="headerlink" title="汇编语言的组成"></a>汇编语言的组成</h4><ol>
+<li>  汇编指令：机器码的助记符，有对应的机器码</li>
+<li>  伪指令：为汇编过程提供控制信息，没有对应的机器码，计算机并不执行，编译器执行</li>
+<li>  其他符号：由编译器识别，没有对应的机器码</li>
+</ol>
+<h4 id="8086PC-内存地址分配"><a href="#8086PC-内存地址分配" class="headerlink" title="8086PC 内存地址分配"></a>8086PC 内存地址分配</h4><p>8086PC 具有宽度为20的地址总线，宽度为16的数据总线</p>
+<p>00000 ~ 9FFFF     主存储器RAM</p>
+<p>A0000 ~ BFFFF    显存地址</p>
+<p>C0000 ~ FFFFF    各类ROM</p>
+<h4 id="Debug程序"><a href="#Debug程序" class="headerlink" title="Debug程序"></a>Debug程序</h4><ul>
+<li>  -u : check a memory segment in assembly way    以数据的形式查看一段内存</li>
+<li>  -d : check a memory segment in data way             以代码的形式查看一段内存</li>
+<li>  -e : edit a memory segment                    编辑一段内存地址，使用空格进行后移                   </li>
+<li>  -a : input a series of assembly code              默认在cs:ip位置处编写一段汇编代码，可指定其他内存位置</li>
+<li>  -r : check all registers or update a register       查看所用通用寄存器或者修改某寄存器的值</li>
+<li>  -t : debug a programme step by step with going into sub programme          单步调试，进入子程序</li>
+<li>  -p : debug a programme step by step without going into sub programme      单步调试，不进入子程序，跳过循环</li>
+<li>  -n : rename a file           文件重命名</li>
+<li>  -g : don’t stop executing the programme until the target address you set comes           运行程序到你设定的地址</li>
+</ul>
+<h2 id="通用寄存器"><a href="#通用寄存器" class="headerlink" title="通用寄存器"></a>通用寄存器</h2><p>​    是CPU内部的存储器，是用来暂存计算数据及结果，是程序员可以进行操纵的空间，通过操纵寄存器进而达到操纵CPU的目的</p>
+<p>对于8086CPU来说，总共有14个</p>
+<h3 id="数据寄存器"><a href="#数据寄存器" class="headerlink" title="数据寄存器"></a>数据寄存器</h3><p>其中通用寄存器有4个{AX，BX，CX，DX}，用来存放数据，每一个通用寄存器是由高低两个8位寄存器组成的16位寄存器{AX = AH + AL}；</p>
+<blockquote>
+<p>EAX : 32位寄存器                  RAX : 64位寄存器 </p>
+<p>EAX 位于 RAX 的低32位</p>
+<p>AX 位于 EAX 的低16位</p>
+</blockquote>
+<p>进行8位运算时，两个8位寄存器互不影响，不进位不借位，进位值与借位值存在标志寄存器的<strong>CF标志位</strong>中</p>
+<p>进行16位运算时，  高位溢出舍弃</p>
+<h4 id="MOV-amp-ADD-amp-SUB-指令"><a href="#MOV-amp-ADD-amp-SUB-指令" class="headerlink" title="MOV &amp; ADD &amp; SUB 指令"></a>MOV &amp; ADD &amp; SUB 指令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mov ax,bx      ; 将ax中的数据与bx相加后结果送入ax</span><br><span class="line">mov ax,5FC5    ; 将ax的值改为5fc5</span><br><span class="line">mov al,bh      ; 将ax的低8位的值改为bx高8位的值</span><br><span class="line">add ax,05A6    ; ax的值加上05a6后，送入ax中</span><br><span class="line">add bh,al      ; 将bx的高8位加上ax的低8位</span><br><span class="line">sub ax,ax      ; 减法运算</span><br></pre></td></tr></table></figure>
+
+<h3 id="地址寄存器"><a href="#地址寄存器" class="headerlink" title="地址寄存器"></a>地址寄存器</h3><ul>
+<li><p>段地址寄存器</p>
+<p>  {CS，DS，SS，ES} = {代码段，数据段，堆栈段，其他段}</p>
+</li>
+<li><p>偏移地址寄存器</p>
+<p>  {SP，BP，SI，DI，IP，BX} = {，，，，指令指针，}</p>
+</li>
+<li><p>设计目的</p>
+<p>  8086CPU地址总线宽度为20，而寄存器位长16，那么就需要用两个寄存器来存一个物理地址</p>
+</li>
+</ul>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">PhysicalAddr</span> <span class="operator">=</span> <span class="variable">SegmentAddr</span> <span class="operator">*</span> <span class="number">10</span><span class="variable">h</span> <span class="operator">+</span> <span class="variable">OffsetAddr</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="CS-IP-代码段"><a href="#CS-IP-代码段" class="headerlink" title="CS : IP 代码段"></a>CS : IP 代码段</h3><blockquote>
+<p>  代码段寄存器 : 指令指针寄存器</p>
+</blockquote>
+<p>CPU将CS:IP指向的内存单元中的内容当做代码执行 </p>
+<p>指令执行过程：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 从CS:IP指向的内存单元中读取指令，读取的指令进入指令缓冲区</span><br><span class="line">2. IP = IP + Length(Instruction) 从而指向下一条指令的地址</span><br><span class="line">3. 执行指令，转到步骤 1</span><br></pre></td></tr></table></figure>
+
+<p>在8086CPU加电启动或复位后，CS被置为FFFFH，IP被置为0000H</p>
+<h4 id="JMP-指令"><a href="#JMP-指令" class="headerlink" title="JMP 指令"></a>JMP 指令</h4><p>转移指令，修改CS:IP的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jmp 2000:0010    ; 修改CS为2000，修改IP为0010</span><br><span class="line">jmp ax           ; 修改IP为AX中存储的值</span><br></pre></td></tr></table></figure>
+
+<h3 id="DS-Offset-数据段"><a href="#DS-Offset-数据段" class="headerlink" title="DS : [Offset] 数据段"></a>DS : [Offset] 数据段</h3><blockquote>
+<p>  数据段寄存器 : [偏移地址]</p>
+</blockquote>
+<p>CPU将DS:[Offset]指向的内存地址中的内容当做数据读写（<u><strong>需要注意小端序还是大端序</strong></u>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov bx,3001</span><br><span class="line">mov ds,bx         ; 将BX中存储的段地址送入DS数据段寄存器中，8086不允许使用MOV指令直接给段寄存器赋值</span><br><span class="line">mov ax,[0101]     ; 将内存中地址为 DS * 10h + 0101h 中的数据送入AX中</span><br><span class="line">mov [0102],ax     ; 将AX中的数据送入到内存地位为 DS * 10h + 0102h 的地方</span><br></pre></td></tr></table></figure>
+
+<h3 id="SS-SP-堆栈段"><a href="#SS-SP-堆栈段" class="headerlink" title="SS : SP 堆栈段"></a>SS : SP 堆栈段</h3><blockquote>
+<p>  堆栈段寄存器 : 栈顶指针寄存器</p>
+</blockquote>
+<p>8086CPU的入栈操作和出栈操作都是以<strong>字</strong>为单位进行的；入栈时，栈顶由高地址向低地址的方向增长(小端序)</p>
+<h4 id="PUSH-amp-POP-指令"><a href="#PUSH-amp-POP-指令" class="headerlink" title="PUSH &amp; POP 指令"></a>PUSH &amp; POP 指令</h4><p>出栈 &amp; 入栈</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">;指定栈顶界限，假定栈段范围为10000 ~ 1001F</span><br><span class="line">mov ax,1000</span><br><span class="line">mov ss,ax</span><br><span class="line">;设置栈顶指针,空栈时,栈顶指针指向栈底后一位地址</span><br><span class="line">mov sp,0020</span><br><span class="line">;入栈：</span><br><span class="line">;	SP = SP - 2       </span><br><span class="line">mov bx,3FFF</span><br><span class="line">push bx</span><br><span class="line">push ds</span><br><span class="line">push [0]</span><br><span class="line">;出栈：</span><br><span class="line">;	SP = SP + 2</span><br><span class="line">pop [0]</span><br><span class="line">pop ds</span><br><span class="line">pop bx</span><br></pre></td></tr></table></figure>
+
+<p><strong>当执行修改SS堆栈段寄存器的值时，下一条指令也会紧接着执行</strong></p>
+<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">assume cs:code,ds:data,ss:stack</span><br><span class="line"></span><br><span class="line">; 数据段</span><br><span class="line">data segment</span><br><span class="line">date ends</span><br><span class="line">; 堆栈段</span><br><span class="line">stack segment stack</span><br><span class="line">stack ends</span><br><span class="line">; 代码段</span><br><span class="line">code segment</span><br><span class="line">	</span><br><span class="line">	mov ax,4500H</span><br><span class="line">	mov ds,ax</span><br><span class="line">	mov ax,1000H</span><br><span class="line">	mov ss,ax</span><br><span class="line">	mov sp,0020H</span><br><span class="line">	</span><br><span class="line">	mov ax,0D200H      ; 在汇编源程序中，数据不能以字母开头，若最高位＞9时，需要在前面补0</span><br><span class="line">	mov ds:[0],ax</span><br><span class="line">    push ds:[0]</span><br><span class="line">    pop bx</span><br><span class="line">    mov ds:[2],bx</span><br><span class="line">	</span><br><span class="line">	; 返回上级程序</span><br><span class="line">	mov ax,4c00H</span><br><span class="line">	int 21H</span><br><span class="line">code ends</span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<h2 id="BX-amp-LOOP-指令"><a href="#BX-amp-LOOP-指令" class="headerlink" title="[BX] &amp; LOOP 指令"></a>[BX] &amp; LOOP 指令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov bx,0010H   </span><br><span class="line">mov ax,50F0H</span><br><span class="line">mov ds:[bx],ax   ; 将bx寄存器中的数据当做地址偏移量</span><br></pre></td></tr></table></figure>
+
+<p>​        CX寄存器中的值可作为loop指令循环次数，每次减一，知道减为零结束循环</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">assume cs:code</span><br><span class="line">code segment</span><br><span class="line">	mov ax,1000H</span><br><span class="line">	mov ds,ax</span><br><span class="line">	mov bx,5H</span><br><span class="line">	</span><br><span class="line">	mov al,ds:[bx]</span><br><span class="line">	mov ah,0H</span><br><span class="line">	mov dx,0H</span><br><span class="line">	</span><br><span class="line">	mov cx,5            ; 初始化循环次数</span><br><span class="line">s: 	add dx,ax           ; 定义循环体</span><br><span class="line">	loop s              ; 开始循环</span><br><span class="line">	</span><br><span class="line">	mov ax,004cH</span><br><span class="line">	int 21H</span><br><span class="line">code ends</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p>综合运用[bx]&amp;loop</p>
+<h3 id="INC-指令"><a href="#INC-指令" class="headerlink" title="INC 指令"></a>INC 指令</h3><p>​    数值自增一</p>
+<h3 id="DEC-指令"><a href="#DEC-指令" class="headerlink" title="DEC 指令"></a>DEC 指令</h3><p>​    数值自减一</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">; 	计算从10000H ~ 1000aH地址中所有数值的和，储存在dx中</span><br><span class="line">	</span><br><span class="line">	mov ax,1000H</span><br><span class="line">	mov ds,ax</span><br><span class="line">	mov bx,0H</span><br><span class="line"></span><br><span class="line">	mov dx,0H</span><br><span class="line">	mov cx,0aH</span><br><span class="line"></span><br><span class="line">s: 	mov al,ds:[bx]</span><br><span class="line">	mov ah,0H</span><br><span class="line">	add dx,ax</span><br><span class="line">	inc bx</span><br><span class="line">	loop s</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="DW-伪指令-amp-start-标号"><a href="#DW-伪指令-amp-start-标号" class="headerlink" title="DW 伪指令 &amp; start 标号"></a>DW 伪指令 &amp; start 标号</h2><p>定义字型数据(define word)，可在代码段中存放提前定义好的数据</p>
+<p><strong>start</strong> 标号用来标识程序的入口，即是初始化CS:IP的值，用 <strong>end</strong> 指令来声明<strong>start</strong>标号的作用（程序入口）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">assume cs:code</span><br><span class="line">code segment</span><br><span class="line">	</span><br><span class="line">	; 定义数据</span><br><span class="line">	dw 0123H,0a446H,5FF6H</span><br><span class="line">	</span><br><span class="line">	; 代码</span><br><span class="line">start:	mov bx,0</span><br><span class="line">		mov ax,0</span><br><span class="line">		mov cx,3</span><br><span class="line">		</span><br><span class="line">s:		add ax,cs:[bx]</span><br><span class="line">		add bx,2H</span><br><span class="line">		loop s</span><br><span class="line">	</span><br><span class="line">		mov ax,4c00H</span><br><span class="line">		int 21H</span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+
+<h3 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h3><p>​    将数据、代码、栈三段分立，方便管理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">assume cs:code,ds:data,ss:stack</span><br><span class="line"></span><br><span class="line">data segment</span><br><span class="line">	dw 0123H,0456H,0789H,0abcH,0defH</span><br><span class="line">data ends</span><br><span class="line"></span><br><span class="line">stack segment stack</span><br><span class="line">	dw 0H,0H,0H,0,0,0,0</span><br><span class="line">stack ends</span><br><span class="line"></span><br><span class="line">code segment</span><br><span class="line">start:	</span><br><span class="line">		mov ax,data</span><br><span class="line">		mov ds,ax         ; 分配数据段</span><br><span class="line">		mov ax,stack</span><br><span class="line">		mov ss,ax         ; 分配栈段</span><br><span class="line">		mov sp,0eH</span><br><span class="line">		</span><br><span class="line">		mov ax,4c00H</span><br><span class="line">		int 21H</span><br><span class="line">code ends</span><br><span class="line"></span><br><span class="line">end start</span><br><span class="line">		</span><br></pre></td></tr></table></figure>
+
+<h2 id="地址定位与数据处理"><a href="#地址定位与数据处理" class="headerlink" title="地址定位与数据处理"></a>地址定位与数据处理</h2><h3 id="AND-amp-OR-指令"><a href="#AND-amp-OR-指令" class="headerlink" title="AND &amp; OR 指令"></a>AND &amp; OR 指令</h3><p>​    二进制逻辑与或运算</p>
+<h3 id="XOR-指令"><a href="#XOR-指令" class="headerlink" title="XOR 指令"></a>XOR 指令</h3><p>​    异或运算，常用于main函数设置返回值0</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xor eax,eax     ; 该命令执行速度比 mov ax,0 要快</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串型数据-amp-DB-伪指令"><a href="#字符串型数据-amp-DB-伪指令" class="headerlink" title="字符串型数据 &amp; DB 伪指令"></a>字符串型数据 &amp; DB 伪指令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">data segment</span><br><span class="line">	db &#x27;string&#x27;</span><br><span class="line">data ends</span><br><span class="line">; low -&gt; up</span><br><span class="line">or al,00100000</span><br><span class="line">; up -&gt; low</span><br><span class="line">and al,11011111</span><br></pre></td></tr></table></figure>
+
+<h3 id="灵活定位-amp-DI-amp-SI-amp-BP"><a href="#灵活定位-amp-DI-amp-SI-amp-BP" class="headerlink" title="灵活定位 &amp; DI &amp; SI &amp; BP"></a>灵活定位 &amp; DI &amp; SI &amp; BP</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mov ax,ds:[bx+100]</span><br><span class="line">mov ax,ds:[bx+di]</span><br><span class="line">mov ax,ds:[bx][si]</span><br><span class="line">mov ax,ds:[bx+si+100]</span><br><span class="line">mov ax,ds:[bx][si].100</span><br><span class="line">mov ax,ds:[bp+si+100]</span><br><span class="line">mov ax,ds:[bp][si].100</span><br></pre></td></tr></table></figure>
+
+<p>SI &amp; DI ：16位寄存器，无法分割为两个8位寄存器</p>
+<p>BP：<a href="#BP%E5%AF%84%E5%AD%98%E5%99%A8">见此处</a></p>
+<h3 id="X-PTR"><a href="#X-PTR" class="headerlink" title="X PTR"></a>X PTR</h3><p><strong>指明数据长度的方式</strong>：</p>
+<ul>
+<li><p>通过寄存器名指明数据长度</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov ax,1H</span><br><span class="line">mov al,1H</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>  通过操作符 X PTR 指明数据长度</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov word ptr ds:[0],1H</span><br><span class="line">mov byte ptr ds:[2],1H</span><br><span class="line">mov byte ptr ds:[bx+si+10],&#x27;F&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="DIV-指令"><a href="#DIV-指令" class="headerlink" title="DIV 指令"></a>DIV 指令</h3><ol>
+<li>  除数：在寄存器或内存</li>
+<li>被除数：默认在AX或DX<ul>
+<li>  除数为8位，被除数为16位，则被除数放在AX</li>
+<li>  除数为16位，被除数为32位，则被除数在DX与AX，DX放高位，AX放低位</li>
+</ul>
+</li>
+<li>结果：<ul>
+<li>  若除数为8位，则al存放商，ah存放余数</li>
+<li>  若除数为16位，则ax存放商，dx存放余数</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">; 计算 100001 / 100</span><br><span class="line">; 100001 =&gt; 186a1H</span><br><span class="line">mov dx,1H</span><br><span class="line">mov ax,86a1H</span><br><span class="line">mov word ptr ds:[bx+si+10],100</span><br><span class="line">div word ptr ds:[bx+si+10]</span><br></pre></td></tr></table></figure>
+
+<h3 id="DD-伪指令"><a href="#DD-伪指令" class="headerlink" title="DD 伪指令"></a>DD 伪指令</h3><p>用来定义DWORD（double word）双字型数据</p>
+<h3 id="DUP-伪指令"><a href="#DUP-伪指令" class="headerlink" title="DUP 伪指令"></a>DUP 伪指令</h3><p>与db、dw、dd等数据定义伪指令配合使用，进行重复数据的定义</p>
+<ul>
+<li>  db 重复次数 dup (被重复的字节型数据)</li>
+<li>  dw 重复次数 dup (被重复的字型数据)</li>
+<li>  dd 重复次数 dup (被重复的双字型数据)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db 3 dup (&#x27;12&#x27;)    ;   db &#x27;121212&#x27;</span><br><span class="line">db 5 dup (10H)     ;   db 10h,10h,10h,10h,10h</span><br><span class="line">dw 2 dup (5f5fH)   ;   dw 5f5fH,5f5fH</span><br><span class="line">dd 2 dup(12H)      ;   dd 00000012H,00000012H</span><br></pre></td></tr></table></figure>
+
+<h2 id="JMP指令原理"><a href="#JMP指令原理" class="headerlink" title="JMP指令原理"></a>JMP指令原理</h2><h3 id="OFFSET-伪指令"><a href="#OFFSET-伪指令" class="headerlink" title="OFFSET 伪指令"></a>OFFSET 伪指令</h3><p>取得标号的偏移地址，<strong>不能用 OFFSET 获得堆栈参数的地址，因为 OFFSET 只适用于编译时已知的地址。下面的语句无法汇编</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">code segment</span><br><span class="line">start:	</span><br><span class="line">		mov ax,offset start</span><br></pre></td></tr></table></figure>
+
+<h3 id="JMP指令的用法"><a href="#JMP指令的用法" class="headerlink" title="JMP指令的用法"></a>JMP指令的用法</h3><ol>
+<li><p>数值指明目的地址</p>
+<ul>
+<li><p>同时修改cs : ip</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmp 1000:0000</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>段内短转移（机器码中不出现目的地址，只出现相对位移，**<u>==该相对位移在编译时确定==</u>**）</p>
+<p>  转移位移为8位，-128,127</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">code segment</span><br><span class="line">s:</span><br><span class="line">	mov ax,10H</span><br><span class="line">	jmp short s          ; 使用相对距离差修改ip的值，ip = ip + (标号地址 - jmp后下一条指令初地址) </span><br><span class="line">	mov bx,11H</span><br></pre></td></tr></table></figure></li>
+<li><p>段内近转移</p>
+<p>  转移位移为16位，-32768,32767（机器码中不出现目的地址，……同短转移）</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">code segment</span><br><span class="line">s:</span><br><span class="line">	mov ax,10H</span><br><span class="line">	jmp near ptr s</span><br><span class="line">	mov bx,11H</span><br></pre></td></tr></table></figure></li>
+<li><p>段间转移（远转移）</p>
+<p>  同时修改CS:IP，cs = 标号所在段的段地址，ip = 标号在所在段的偏移地址</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">acode segment</span><br><span class="line">sa:</span><br><span class="line">	mov ax,10H</span><br><span class="line">	jmp far ptr sb</span><br><span class="line">acode ends</span><br><span class="line"></span><br><span class="line">bcode segment</span><br><span class="line">sb:</span><br><span class="line">	mov bx,11H</span><br><span class="line">bcode ends</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>转移地址在寄存器中</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov ax,10F1H</span><br><span class="line">jmp ax</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>转移地址在内存中</p>
+<ul>
+<li><p>内存单元中存有一个字型数据，即为目的地址的偏移地址（段内转移但非近转移）</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov ax,1000H</span><br><span class="line">mov ds:[1],ax</span><br><span class="line">jmp word ptr ds:[1]</span><br></pre></td></tr></table></figure></li>
+<li><p>内存单元中存有一个双字型数据，高位为目的地址的段地址，低位为偏移地址（段间转移）</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov ax,1000H</span><br><span class="line">mov ds:[0],ax</span><br><span class="line">mov word ptr ds:[2],0H</span><br><span class="line">jmp dword ptr ds:[0]</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h3 id="有条件转移指令"><a href="#有条件转移指令" class="headerlink" title="有条件转移指令"></a>有条件转移指令</h3><p>所有的条件转移指令都是短转移，在对应机器码中不出现目的地址，只出现相对位移，在编译时确定</p>
+<ul>
+<li><p>jcxz 指令</p>
+<p>  功能上等同于在段内短转移之前判断CX是否等于0，若cx == 0，则跳转，若cx != 0，则不跳转</p>
+</li>
+<li><p>loop 指令</p>
+<p>  本质上也是条件转移指令，条件与jcxz相反，且伴随着cx的递减</p>
+</li>
+<li><p>检测比较结果的条件转移指令（根据**<u>==无符号数==</u>**的比较结果进行转移）</p>
+<table>
+<thead>
+<tr>
+<th align="center">指令</th>
+<th align="center">含义</th>
+<th align="center">相关标志位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">JE</td>
+<td align="center">等于则转移</td>
+<td align="center">ZF = 1</td>
+</tr>
+<tr>
+<td align="center">JNE</td>
+<td align="center">不等于则转移</td>
+<td align="center">ZF = 0</td>
+</tr>
+<tr>
+<td align="center">JB</td>
+<td align="center">低于则转移</td>
+<td align="center">CF = 1</td>
+</tr>
+<tr>
+<td align="center">JNB</td>
+<td align="center">不低于则转移</td>
+<td align="center">CF = 0</td>
+</tr>
+<tr>
+<td align="center">JA</td>
+<td align="center">高于则转移</td>
+<td align="center">CF = 0  &amp;&amp;  ZF = 0</td>
+</tr>
+<tr>
+<td align="center">JNA</td>
+<td align="center">不高于则转移</td>
+<td align="center">CF = 1  ||  ZF = 1</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jcxz 标号</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="栈操作"><a href="#栈操作" class="headerlink" title="栈操作"></a>栈操作</h2><h3 id="RET-amp-RETF-指令"><a href="#RET-amp-RETF-指令" class="headerlink" title="RET &amp; RETF 指令"></a>RET &amp; RETF 指令</h3><p>ret：用栈中的数据修改ip的内容，实现近转移</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ret </span><br><span class="line">====&gt;   </span><br><span class="line">pop ip</span><br></pre></td></tr></table></figure>
+
+<p>retf：用栈中的数据修改 cs : ip，实现远转移</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">retf </span><br><span class="line">====&gt;</span><br><span class="line">pop ip</span><br><span class="line">pop cs</span><br><span class="line">====&gt;</span><br><span class="line">mov bx,sp</span><br><span class="line">jmp dword ptr ss:[bx]</span><br><span class="line">add sp,4</span><br></pre></td></tr></table></figure>
+
+<h3 id="CALL-指令"><a href="#CALL-指令" class="headerlink" title="CALL 指令"></a>CALL 指令</h3><p>call：将当前 ip 或 cs : ip 压入栈中，再转移</p>
+<ul>
+<li><p>进行近转移的call指令</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">call fun     ; fun 为本段内某标号</span><br><span class="line">====&gt;</span><br><span class="line">push ip</span><br><span class="line">jmp near ptr fun</span><br></pre></td></tr></table></figure></li>
+<li><p>进行远转移的call指令</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">call far ptr fun     ; fun 为非本段内某标号</span><br><span class="line">====&gt;</span><br><span class="line">push cs</span><br><span class="line">push ip</span><br><span class="line">jmp far ptr fun</span><br></pre></td></tr></table></figure></li>
+<li><p>目的地址在寄存器的call指令</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">call ax      </span><br><span class="line">====&gt;</span><br><span class="line">push ip</span><br><span class="line">jmp ax</span><br></pre></td></tr></table></figure></li>
+<li><p>目的地址在内存中的call指令</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">call word ptr ds:[bx]              ; 段内转移</span><br><span class="line">====&gt;</span><br><span class="line">push ip</span><br><span class="line">jmp word ptr ds:[bx]</span><br><span class="line">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span><br><span class="line">call dword ptr ds:[bx]             ; 段间转移（远转移）</span><br><span class="line">====&gt;</span><br><span class="line">push cs</span><br><span class="line">push ip</span><br><span class="line">jmp dword ptr ds:[bx]</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="BP寄存器"><a href="#BP寄存器" class="headerlink" title="BP寄存器"></a>BP寄存器</h3><ul>
+<li>  当没有显式指出段地址且偏移量寄存器使用bp时，则段地址默认为SS寄存器中的值，无法分割bp为基址寄存器</li>
+<li>  和堆栈指针SP联合使用的，作为SP校准使用的，只有在寻找堆栈里的数据和使用个别的寻址方式时候才能用到</li>
+<li>  一般在函数中用来保存进入函数时的sp的栈顶基址每次子函数调用时，系统在开始时都会保存这个两个指针并在函数结束时恢复sp和bp的值。像下面这样：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">;在函数进入时:</span><br><span class="line">push bp     ;	保存bp指针</span><br><span class="line">mov bp,sp 	;	将sp指针传给bp，此时bp指向sp的基地址。</span><br><span class="line"></span><br><span class="line">;;;;   函数体   ;;;;</span><br><span class="line"></span><br><span class="line">mov sp,bp   ;	sp回到栈顶</span><br><span class="line">pop bp      ;	bp恢复初始值</span><br><span class="line">ret         ; 	函数返回</span><br></pre></td></tr></table></figure>
+
+<h3 id="参数压栈"><a href="#参数压栈" class="headerlink" title="参数压栈"></a>参数压栈</h3><p>​    调用某些带有参数的函数时，先按参数顺序将参数压栈(参数位于栈高位)，然后再执行<strong>CALL</strong>命令将CS:IP压栈(CS:IP位于栈低位)</p>
+<h3 id="LEA-指令"><a href="#LEA-指令" class="headerlink" title="LEA 指令"></a>LEA 指令</h3><p>​    LEA 指令返回间接操作数的地址。由于间接操作数中包含一个或多个寄存器，因此会在运行时计算这些操作数的偏移量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">makeArray PROC</span><br><span class="line">    push ebp</span><br><span class="line">    mov ebp,esp</span><br><span class="line">    sub esp, 32            ;myString 位于 EBP-30 的位置</span><br><span class="line">    lea esi, [ebp-30]      ;加载 myString 的地址</span><br><span class="line">    mov ecx, 30            ;循环计数器</span><br><span class="line">LI: mov BYTE PTR [esi]     ;填充一个位置</span><br><span class="line">    inc esi                ;指向下一个元素</span><br><span class="line">    loop LI                ;循环，直到 ECX=0</span><br><span class="line">    add esp, 32            ;删除数组(恢复ESP)</span><br><span class="line">    pop ebp</span><br><span class="line">    ret</span><br><span class="line">makeArray ENDP</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="MUL-指令"><a href="#MUL-指令" class="headerlink" title="MUL 指令"></a>MUL 指令</h3><ul>
+<li>  两数相乘，要么都是8位，要么都是16位</li>
+<li>  若是8位，一个默认在AL，另一个在8位寄存器或内存，结果在AX</li>
+<li>  若是16位，一个默认在AX，另一个在16位寄存器或内存，高位在DX，低位在AX</li>
+</ul>
+<h3 id="寄存器冲突问题"><a href="#寄存器冲突问题" class="headerlink" title="寄存器冲突问题"></a>寄存器冲突问题</h3><p>若计数器寄存器 CX 另有用途，无法存放循环次数，那么可以用 jmp 与 jcxz 指令配合代替loop指令，实现有限循环</p>
+<hr>
+<h2 id="标志寄存器"><a href="#标志寄存器" class="headerlink" title="标志寄存器"></a>标志寄存器</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
+<li>  用来存储相关指令的某些执行结果</li>
+<li>  用来为CPU执行相关指令提供行为依据</li>
+<li>  用来控制CPU的相关工作方式</li>
+</ul>
+<blockquote>
+<p>  8086CPU的标志寄存器时16位寄存器，其信息是按起作用，每一个位存储的信息通常被称为程序状态字(PSW)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">15</th>
+<th align="center">14</th>
+<th align="center">13</th>
+<th align="center">12</th>
+<th align="center">11</th>
+<th align="center">10</th>
+<th align="center">9</th>
+<th align="center">8</th>
+<th align="center">7</th>
+<th align="center">6</th>
+<th align="center">5</th>
+<th align="center">4</th>
+<th align="center">3</th>
+<th align="center">2</th>
+<th align="center">1</th>
+<th align="center">0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">OF</td>
+<td align="center">DF</td>
+<td align="center">IF</td>
+<td align="center">TF</td>
+<td align="center">SF</td>
+<td align="center">ZF</td>
+<td align="center"></td>
+<td align="center">AF</td>
+<td align="center"></td>
+<td align="center">PF</td>
+<td align="center"></td>
+<td align="center">CF</td>
+</tr>
+</tbody></table>
+<h3 id="ZF-标志"><a href="#ZF-标志" class="headerlink" title="ZF 标志"></a>ZF 标志</h3><ul>
+<li>  位于第  <strong>==6==</strong> 位</li>
+<li>  零标志位，记录相关指令执行后，其结果是否为0，若为 ==0== 则ZF = 1，否则ZF = 0；</li>
+<li>  在8086CPU指令集中，add、sub、mul、div、inc、or、and 等运算指令一般影响ZF</li>
+</ul>
+<h3 id="PF-标志"><a href="#PF-标志" class="headerlink" title="PF 标志"></a>PF 标志</h3><ul>
+<li>  位于第 <strong>==2==</strong> 位</li>
+<li>  奇偶标志位，记录相关指令执行后，其结果的所有bit位中1的个数是否为偶数，若 ==偶== 则 ==1==，若 ==奇== 则 ==0==</li>
+</ul>
+<h3 id="SF-标志"><a href="#SF-标志" class="headerlink" title="SF 标志"></a>SF 标志</h3><ul>
+<li>  位于第 <strong>==7==</strong> 位</li>
+<li>  符号标志位，记录相关指令执行后，其结果是否为负，若 ==负== 则 ==1==，若 ==非负== 则 ==0==</li>
+</ul>
+<h3 id="CF-标志"><a href="#CF-标志" class="headerlink" title="CF 标志"></a>CF 标志</h3><ul>
+<li>  位于第 <strong>==0==</strong> 位</li>
+<li>  进位标志位，一般情况下，在进行 <u>无符号数</u> 运算的时候，记录了运算结果的最高有效位向更高位的进位值，或借位值</li>
+</ul>
+<h3 id="OF-标志"><a href="#OF-标志" class="headerlink" title="OF 标志"></a>OF 标志</h3><ul>
+<li>  位于第 <strong>==11==</strong> 位</li>
+<li>  CPU在进行 <u>有符号数</u> 运算时，若溢出则为 1 ，若未溢出，则为 0 </li>
+</ul>
+<h3 id="ADC-指令"><a href="#ADC-指令" class="headerlink" title="ADC 指令"></a>ADC 指令</h3><p>adc指令是带进位的加法指令，利用了CF标志位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adc ax,bx    ;  ax = ax + bx + CF</span><br></pre></td></tr></table></figure>
+
+<h3 id="SBB-指令"><a href="#SBB-指令" class="headerlink" title="SBB 指令"></a>SBB 指令</h3><p>sbb指令是带借位减法指令，同样利用了CF标志位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbb ax,bx    ; ax = ax - bx - CF</span><br></pre></td></tr></table></figure>
+
+<h3 id="CMP-指令"><a href="#CMP-指令" class="headerlink" title="CMP 指令"></a>CMP 指令</h3><p>cmp是比较指令，功能上相当于减法指令，但不保存结果，只影响相关标志位的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov ax,3</span><br><span class="line">mov bx,4</span><br><span class="line">cmp ax,bx</span><br><span class="line">; 相当于执行减法，执行后 ZF = 0，PF = 1，SF = 1,CF = 1,OF = 0</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  ZF = 1  ==&gt;  ax == bx</li>
+<li>  ZF = 0  ==&gt;  ax != bx</li>
+<li>  CF = 1  ==&gt;  ax &lt; bx</li>
+<li>  CF = 0  ==&gt;  ax &gt;= bx</li>
+</ul>
+<h3 id="TEST-指令"><a href="#TEST-指令" class="headerlink" title="TEST 指令"></a>TEST 指令</h3><p>test 对两个操作数进行逻辑（按位）与操作，功能上与and指令类似，但不保存结果，只影响相关标志位的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">; 检查ax的最高位是否为 1</span><br><span class="line">test ax,10000000b</span><br><span class="line">je isNotOne      ; 最高位是 0</span><br><span class="line">jne isOne		 ; 最高位是 1</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="与标志位相关的条件转移指令"><a href="#与标志位相关的条件转移指令" class="headerlink" title="与标志位相关的条件转移指令"></a>与标志位相关的条件转移指令</h3><p><a href="#%E6%9C%89%E6%9D%A1%E4%BB%B6%E8%BD%AC%E7%A7%BB%E6%8C%87%E4%BB%A4">详细见此处</a></p>
+<h3 id="DF-标志-amp-串传送指令"><a href="#DF-标志-amp-串传送指令" class="headerlink" title="DF 标志 &amp; 串传送指令"></a>DF 标志 &amp; 串传送指令</h3><ul>
+<li>  DF 标志位于第 ==10== 位</li>
+<li>  方向标志位，在串处理指令中，控制每次操作后 SI 与 DI 的增减</li>
+<li>  若 DF = 0，则每次操作后 SI &amp; DI 递增</li>
+<li>  若 DF = 1，则每次操作后 SI &amp; DI 递减</li>
+</ul>
+<h4 id="MOVSB-指令"><a href="#MOVSB-指令" class="headerlink" title="MOVSB 指令"></a>MOVSB 指令</h4><p>movsb 指令功能是将ds:si指向的内存单元中的一个字节型数据送入es:di；相当于:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">; if DF = 1</span><br><span class="line">mov es:[di],byte ptr ds:[si]</span><br><span class="line">dec si</span><br><span class="line">dec di</span><br><span class="line"></span><br><span class="line">; if DF = 0</span><br><span class="line">mov es:[di],byte ptr ds:[si]</span><br><span class="line">inc si</span><br><span class="line">inc di</span><br></pre></td></tr></table></figure>
+
+<h4 id="MOVSW-指令"><a href="#MOVSW-指令" class="headerlink" title="MOVSW 指令"></a>MOVSW 指令</h4><p>movsw 指令与 movsb 指令类似，只是把字节型数据改为字型数据，si 与 di 每次变化两个单位</p>
+<h4 id="与-REP-的配合"><a href="#与-REP-的配合" class="headerlink" title="与 REP 的配合"></a>与 REP 的配合</h4><p>上述两种指令都需要与 rep 相配和，实现数据从 DS段 <strong>连续</strong>传送到 ES段 中，本质是由loop循环的实现，循环次数由 CX 的值决定</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">rep movsb</span><br><span class="line">====&gt;</span><br><span class="line">s: </span><br><span class="line">	movsb</span><br><span class="line">	loop s</span><br><span class="line">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span><br><span class="line">rep movsw</span><br><span class="line">====&gt;</span><br><span class="line">s: </span><br><span class="line">	movsw</span><br><span class="line">	loop s</span><br></pre></td></tr></table></figure>
+
+<h4 id="CLD-amp-STD-指令"><a href="#CLD-amp-STD-指令" class="headerlink" title="CLD &amp; STD 指令"></a>CLD &amp; STD 指令</h4><ul>
+<li>  sld 指令：将DF置 0，实现 si 与 di 的自增</li>
+<li>  std 指令：将DF置 1，实现 si 与 di 的自减</li>
+</ul>
+<h3 id="PUSHF-amp-POPF-指令"><a href="#PUSHF-amp-POPF-指令" class="headerlink" title="PUSHF &amp; POPF 指令"></a>PUSHF &amp; POPF 指令</h3><p>pushf的功能是将标志寄存器中的值压栈，而popf是将栈中的数据弹出并送入标志寄存器中</p>
+<h3 id="标志寄存器在Debug中的表示"><a href="#标志寄存器在Debug中的表示" class="headerlink" title="标志寄存器在Debug中的表示"></a>标志寄存器在Debug中的表示</h3><table>
+<thead>
+<tr>
+<th align="center">标志</th>
+<th align="center">置一</th>
+<th align="center">置零</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">OF</td>
+<td align="center">OV</td>
+<td align="center">NV</td>
+</tr>
+<tr>
+<td align="center">SF</td>
+<td align="center">NG</td>
+<td align="center">PL</td>
+</tr>
+<tr>
+<td align="center">ZF</td>
+<td align="center">ZR</td>
+<td align="center">NZ</td>
+</tr>
+<tr>
+<td align="center">PF</td>
+<td align="center">PE</td>
+<td align="center">PO</td>
+</tr>
+<tr>
+<td align="center">CF</td>
+<td align="center">CY</td>
+<td align="center">NC</td>
+</tr>
+<tr>
+<td align="center">DF</td>
+<td align="center">DN</td>
+<td align="center">UP</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="内中断"><a href="#内中断" class="headerlink" title="内中断"></a>内中断</h2><h1 id="32位逆向"><a href="#32位逆向" class="headerlink" title="32位逆向"></a>32位逆向</h1><h2 id="小端序-amp-大端序"><a href="#小端序-amp-大端序" class="headerlink" title="小端序&amp;大端序"></a>小端序&amp;大端序</h2><p>地址高位存数据高位 ===》 小端序</p>
+<p>地址高位存地址低位 ===》 大端序</p>
+<h2 id="IA-32寄存器"><a href="#IA-32寄存器" class="headerlink" title="IA-32寄存器"></a>IA-32寄存器</h2><h3 id="基本程序运行寄存器"><a href="#基本程序运行寄存器" class="headerlink" title="基本程序运行寄存器"></a>基本程序运行寄存器</h3><ul>
+<li>  通用寄存器{EAX，EBX，ECX，EDX，ESI，EDI，EBP，ESP}</li>
+<li>  段寄存器{CS，DS，SS，ES，FS，GS}</li>
+<li>  程序状态与控制寄存器{EFLAGS}</li>
+<li>  指令指针寄存器{EIP}</li>
+</ul>
+<blockquote>
+<p>Tips:</p>
+<ol>
+<li>  EAX一般用于函数返回值中，所有Win32 API函数都会先把返回值保存在EAX中再返回</li>
+<li>  ES，FS，GS：附加数据段</li>
+</ol>
+</blockquote>
+<h2 id="栈帧"><a href="#栈帧" class="headerlink" title="栈帧"></a>栈帧</h2><ul>
+<li>  cdecl：调用者负责清理栈中的参数</li>
+<li>  stdcall：被调用者负责清理栈中的参数</li>
+</ul>
+<h2 id="PE文件格式"><a href="#PE文件格式" class="headerlink" title="PE文件格式"></a>PE文件格式</h2><img src="https://img-blog.csdnimg.cn/20201210163828181.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoYW5nX2Nt,size_16,color_FFFFFF,t_70" alt="img" style="zoom:100%;">
+
+<h3 id="DOS-头"><a href="#DOS-头" class="headerlink" title="DOS 头"></a>DOS 头</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注释掉的不需要重点分析</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_DOS_HEADER</span>&#123;</span></span><br><span class="line">    <span class="number">0X00</span> WORD e_magic;      <span class="comment">//※Magic DOS signature MZ(4Dh 5Ah):MZ标记:用于标记是否是可执行文件</span></span><br><span class="line">    <span class="comment">//0X02 WORD e_cblp;     //Bytes on last page of file</span></span><br><span class="line">    <span class="comment">//0X04 WORD e_cp;       //Pages in file</span></span><br><span class="line">    <span class="comment">//0X06 WORD e_crlc;     //Relocations</span></span><br><span class="line">    <span class="comment">//0X08 WORD e_cparhdr;  //Size of header in paragraphs</span></span><br><span class="line">    <span class="comment">//0X0A WORD e_minalloc; //Minimun extra paragraphs needs</span></span><br><span class="line">    <span class="comment">//0X0C WORD e_maxalloc; //Maximun extra paragraphs needs</span></span><br><span class="line">    <span class="comment">//0X0E WORD e_ss;       //intial(relative)SS value</span></span><br><span class="line">    <span class="comment">//0X10 WORD e_sp;       //intial SP value</span></span><br><span class="line">    <span class="comment">//0X12 WORD e_csum;     //Checksum</span></span><br><span class="line">    <span class="comment">//0X14 WORD e_ip;       //intial IP value</span></span><br><span class="line">    <span class="comment">//0X16 WORD e_cs;       //intial(relative)CS value</span></span><br><span class="line">    <span class="comment">//0X18 WORD e_lfarlc;   //File Address of relocation table</span></span><br><span class="line">    <span class="comment">//0X1A WORD e_ovno;     //Overlay number</span></span><br><span class="line">    <span class="comment">//0x1C WORD e_res[4];   //Reserved words</span></span><br><span class="line">    <span class="comment">//0x24 WORD e_oemid;    //OEM identifier(for e_oeminfo)</span></span><br><span class="line">    <span class="comment">//0x26 WORD e_oeminfo;  //OEM information;e_oemid specific</span></span><br><span class="line">    <span class="comment">//0x28 WORD e_res2[10]; //Reserved words</span></span><br><span class="line">    <span class="number">0x3C</span> DWORD e_lfanew;    <span class="comment">//※Offset to start of PE header:定位PE文件，NT头相对于文件的偏移量</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>e_magic : 固定为 ‘MZ’</p>
+<p>e_lfanew：NT头的文件偏移位置</p>
+<h3 id="DOS-stub"><a href="#DOS-stub" class="headerlink" title="DOS stub"></a>DOS stub</h3><p>​    由代码与数据混合而成，大小不固定，可没有，可存储在16位汇编指令，在dos环境下运行</p>
+<h3 id="NT-头"><a href="#NT-头" class="headerlink" title="NT 头"></a>NT 头</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//x86</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_NT_HEADERS</span> &#123;</span></span><br><span class="line">    DWORD Signature;</span><br><span class="line">    IMAGE_FILE_HEADER FileHeader;                       <span class="comment">// 文件头</span></span><br><span class="line">    IMAGE_OPTIONAL_HEADER32 OptionalHeader;      	   <span class="comment">// 可选头</span></span><br><span class="line">&#125; IMAGE_NT_HEADERS32, *PIMAGE_NT_HEADERS32;</span><br><span class="line"></span><br><span class="line"><span class="comment">//x64</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_NT_HEADERS64</span> &#123;</span></span><br><span class="line">    DWORD Signature;</span><br><span class="line">    IMAGE_FILE_HEADER FileHeader;</span><br><span class="line">    IMAGE_OPTIONAL_HEADER64 OptionalHeader;</span><br><span class="line">&#125; IMAGE_NT_HEADERS64, *PIMAGE_NT_HEADERS64;</span><br></pre></td></tr></table></figure>
+
+<p>Signature: 签名，50450000H ===&gt;  “PE00”</p>
+<h3 id="NT-：文件头"><a href="#NT-：文件头" class="headerlink" title="NT ：文件头"></a>NT ：文件头</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//x86 x64相同</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_FILE_HEADER</span> &#123;</span></span><br><span class="line">    WORD    Machine;                           <span class="comment">// 运行平台  </span></span><br><span class="line">    WORD    NumberOfSections;				<span class="comment">// 节的数量</span></span><br><span class="line">    DWORD   TimeDateStamp;					<span class="comment">// 时间戳</span></span><br><span class="line">    DWORD   PointerToSymbolTable;			<span class="comment">// 符号表指针</span></span><br><span class="line">    DWORD   NumberOfSymbols;				<span class="comment">// 符号数量</span></span><br><span class="line">    WORD    SizeOfOptionalHeader;			<span class="comment">// 可选头大小</span></span><br><span class="line">    WORD    Characteristics;                 <span class="comment">// 文件属性</span></span><br><span class="line">&#125; IMAGE_FILE_HEADER, *PIMAGE_FILE_HEADER;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Machine：</p>
+<ul>
+<li>  0x014cH    x86</li>
+<li>  0x0200H    Intel 64</li>
+<li>  0x8664H    x64</li>
+</ul>
+</li>
+<li><p>Characteristics:</p>
+<ul>
+<li>  0x0002H    可执行文件</li>
+<li>  0x2000H    动态链接库</li>
+<li>  0x1000H    系统文件</li>
+</ul>
+</li>
+</ul>
+<h1 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h1><img src="https://img-blog.csdn.net/20170611205306090?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZGFpZGUyMDEy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="C_complie" style="zoom:125%;">
+
+<h2 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h2><ul>
+<li><p>使用程序</p>
+<p>  ​    <strong>cpp.exe</strong></p>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -E main.c -o main.i</span><br></pre></td></tr></table></figure></li>
+<li><p>作用</p>
+<ol>
+<li>宏替换</li>
+<li>包含头文件</li>
+<li>条件编译</li>
+<li>处理预处理关键字</li>
+</ol>
+</li>
+<li><p>结果</p>
+<p>  ​    扩展的c源码，生成扩展名为 ‘.i ’ 的ASCII文件</p>
+<hr>
+</li>
+</ul>
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><ul>
+<li><p>使用程序</p>
+<p>  ​    <strong>cc1.exe</strong></p>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -S main.i</span><br></pre></td></tr></table></figure></li>
+<li><p>结果</p>
+<p>  ​    将c源码翻译为汇编源码，生成扩展名为 ‘ .s ’的ASCII文件</p>
+<p>  ​    </p>
+<hr>
+</li>
+</ul>
+<h2 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a>汇编</h2><ul>
+<li><p>使用程序</p>
+<p>  ​    <strong>as.exe</strong></p>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -c main.s</span><br></pre></td></tr></table></figure></li>
+<li><p>结果</p>
+<p>  ​    将汇编源码翻译为二进制代码，生成扩展名为 ‘ .o’ 的二进制文件 </p>
+</li>
+<li><p>注意</p>
+<p>  ​    无法直接运行，需要链接（<em>单个文件也需要链接</em>）</p>
+<hr>
+</li>
+</ul>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><ul>
+<li><p>使用程序</p>
+<p>  ​    <strong>collect2.exe</strong> / <strong>ld.exe</strong>  （静态链接器）</p>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc main.o -o main</span><br></pre></td></tr></table></figure></li>
+<li><p>作用</p>
+<ol>
+<li>将众多.o文件合成为一个完整的可执行文件</li>
+<li>链接时，需要加入由编译器提供的启动代码，来调用main函数</li>
+<li>链接时，需要进行符号解析与地址重定位</li>
+</ol>
+</li>
+<li><p>结果</p>
+<p>  ​    在Windows环境下生成‘.exe’ 文件，在linux环境下没有固定扩展名</p>
+</li>
+</ul>
+<h3 id="静态链接"><a href="#静态链接" class="headerlink" title="静态链接"></a>静态链接</h3><ul>
+<li><p>定义</p>
+<p>  ​    在编译时完成的链接，调用 <strong>ld</strong> / <strong>collect2</strong> 链接程序，将所有.o文件整合</p>
+</li>
+<li><p>缺点</p>
+<p>  ​    重复代码较多，浪费计算机资源</p>
+</li>
+<li><p>具体过程</p>
+<ol>
+<li><p>符号解析</p>
+<ul>
+<li><p>作用</p>
+<p> ​    符号解析的目的是将符号的引用与符号的定义练习起来（如：函数的声明与实现）</p>
+</li>
+<li><p>实现</p>
+<p> ​    在每一个.o文件中都会包含一张符号表(.symtab)，用来记录：        </p>
+<p> ​        </p>
+ <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">（1） 本模块定义了哪些符号</span><br><span class="line">（2） 本模块引用了哪些符号</span><br></pre></td></tr></table></figure>
+
+<p> ​        </p>
+</li>
+<li><p>注意</p>
+<p> ​    单个.c文件即为一个模块，整个工程以模块为单位进行组织</p>
+<p> ​    </p>
+</li>
+</ul>
+</li>
+<li><p>地址重定位</p>
+<ul>
+<li><p>作用  </p>
+<p> ​    将.o文件中的每个机器指令的逻辑地址，重定位为实际运行的地址</p>
+ <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 如果是裸机运行的，运行的地址就是内存的物理地址</span><br><span class="line">2. 如果是基于OS运行的，运行地址就是虚拟内存的地址</span><br></pre></td></tr></table></figure></li>
+<li><p>逻辑地址</p>
+<p> ​    在每个节中，从零开始标号</p>
+</li>
+<li><p>虚拟地址</p>
+<ol>
+<li>在32位Linux操作系统下，虚拟地址为32位，从<u>0x08048000</u>开始<pre><code> 2. 在64位Linux操作系统下，虚拟地址为64位，从0x00000000000400000开始
+</code></pre>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="动态链接"><a href="#动态链接" class="headerlink" title="动态链接"></a>动态链接</h3><ul>
+<li><p>定义</p>
+<p>  ​    在编译时只留下调用接口，当程序真正运行起来的时候，才去链接执行</p>
+</li>
+<li><p>使用时机</p>
+<p>  ​    使用动态链接库（DLL）时</p>
+<p>  ​    如printf函数由动态链接库提供，程序编译后，代码中不存在printf函数代码，只有其接口，当程序运行时，再去动态链接其所在的DLL，这里的接口是二进制代码，实质为该函数第一条指令的地址(相对地址 + 绝对地址)</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">相对地址: 某成员在DLL中的相对位置； 绝对地址: DLL被加载到内存中后的物理地址</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>动态链接器。。。</p>
+</li>
+<li><p>链接过程与优点</p>
+<p>  ​    程序运行时，将**<u>整个</u>**DLL加载到内存之中，内存中所有相关进程共享该DLL的代码，减少了代码的冗余，提高了计算机空间资源的利用率</p>
+<blockquote>
+<p>因为DLL并不知道用户的程序需要该库中哪个变量或函数，所以需要将其完整加载到内存中</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h1 id="目标文件"><a href="#目标文件" class="headerlink" title="目标文件"></a>目标文件</h1><h2 id="目标文件类型"><a href="#目标文件类型" class="headerlink" title="目标文件类型"></a>目标文件类型</h2><h3 id="可重定位目标文件"><a href="#可重定位目标文件" class="headerlink" title="可重定位目标文件"></a>可重定位目标文件</h3><ul>
+<li>定义</li>
+</ul>
+<p>​    被用于静态链接的文件，都是看重定位目标文件</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">什么是可重定位？</span><br><span class="line">	因为采用静态链接，逻辑地址需要被重定位为运行地址后才能被运行</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>类型</p>
+<p>  ​    以‘‘**.a 、.lib**’’ 为扩展名的静态库文件以及以‘‘ <strong>.o</strong> ’’为扩展名的二进制文件都是<u>可重定位目标文件</u></p>
+</li>
+</ul>
+<h3 id="可执行目标文件"><a href="#可执行目标文件" class="headerlink" title="可执行目标文件"></a>可执行目标文件</h3><p>​        就是可执行的文件</p>
+<h3 id="共享目标文件"><a href="#共享目标文件" class="headerlink" title="共享目标文件"></a>共享目标文件</h3><p>​        本质就是动态库文件DLL，DLL也被称为共享库</p>
+<hr>
+<h2 id="目标文件格式"><a href="#目标文件格式" class="headerlink" title="目标文件格式"></a>目标文件格式</h2><pre><code>### 裸机（无OS）
+</code></pre>
+<p>​    “ .bin ” 文件格式，直接运行在<strong>arm</strong>裸机上</p>
+<h3 id="UNIX系统"><a href="#UNIX系统" class="headerlink" title="UNIX系统"></a>UNIX系统</h3><ol>
+<li><p>早期unix操作系统</p>
+<p> ​    使用“ <strong>.out</strong>  ” 文件格式，在UNIX操作系统上编译程序后，若不指定可执行文件名，会默认命名为 “ a.out ”</p>
+</li>
+<li><p>system V unix</p>
+<p> ​    a.out 文件格式变为 <strong>COFF</strong> ( Common Object File Format : 一般目标文件格式) </p>
+</li>
+<li><p>线代Unix</p>
+<p> ​    改用 <strong>ELF</strong>（Executable and Linkable Format：可执行、可链接格式）</p>
+</li>
+</ol>
+<h3 id="Windows系统"><a href="#Windows系统" class="headerlink" title="Windows系统"></a>Windows系统</h3><p>​    采用 <strong>PE</strong> （Portable Executable：可移植、可执行格式）</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里的可移植并非指PE格式文件可跨平台执行，而是指兼容多种语言</span><br></pre></td></tr></table></figure>
+
+<h3 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h3><p>​    与现代Unix相同，与使用<strong>ELF</strong>格式，linux操作系统脱胎于unix，因此在linux操作系统编译得到的可执行文件上也默认命名为“ a.out ”，但是文件格式与早期Unix并不一致</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如何理解ELF（可执行、可链接）的含义？</span><br><span class="line">1. 可重定位目标文件、共享目标文件：可以被链接</span><br><span class="line">2. 可执行目标文件：能被执行</span><br></pre></td></tr></table></figure>
+
+<h3 id="ELF格式可重定位目标文件"><a href="#ELF格式可重定位目标文件" class="headerlink" title="ELF格式可重定位目标文件"></a>ELF格式可重定位目标文件</h3><h4 id="组成结构图"><a href="#组成结构图" class="headerlink" title="组成结构图"></a>组成结构图</h4><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.it610.com%2Fimage%2Finfo10%2Fcd31ce13972e4a6a82284b1b07faabae.jpg&refer=http%3A%2F%2Fimg.it610.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1647693494&t=81dd5f93e3a64f75b1a77e522cad6df5" alt="点击查看图片来源" style="zoom: 67%;">
+
+<h4 id="ELF-Header"><a href="#ELF-Header" class="headerlink" title="ELF Header"></a>ELF Header</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用 readelf -h 查看elf头信息</span><br><span class="line">readelf -h file</span><br></pre></td></tr></table></figure>
+
+<p><img src="file:///C:\Users\lenovo\AppData\Roaming\Tencent\Users\956489228\QQ\WinTemp\RichOle\YQZ8(L~D)SSOQ65HK]0YTDS.png" alt="img"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> e_ident[<span class="number">16</span>];        <span class="comment">/* ELF &quot;magic number&quot; */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> e_type[<span class="number">2</span>];      <span class="comment">/* Identifies object file type */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> e_machine[<span class="number">2</span>];       <span class="comment">/* Specifies required architecture */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> e_version[<span class="number">4</span>];       <span class="comment">/* Identifies object file version */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> e_entry[<span class="number">4</span>];     <span class="comment">/* Entry point virtual address */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> e_phoff[<span class="number">4</span>];     <span class="comment">/* Program header table file offset */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> e_shoff[<span class="number">4</span>];     <span class="comment">/* Section header table file offset */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> e_flags[<span class="number">4</span>];     <span class="comment">/* Processor-specific flags */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> e_ehsize[<span class="number">2</span>];        <span class="comment">/* ELF header size in bytes */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> e_phentsize[<span class="number">2</span>];     <span class="comment">/* Program header table entry size */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> e_phnum[<span class="number">2</span>];     <span class="comment">/* Program header table entry count */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> e_shentsize[<span class="number">2</span>];     <span class="comment">/* Section header table entry size */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> e_shnum[<span class="number">2</span>];     <span class="comment">/* Section header table entry count */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> e_shstrndx[<span class="number">2</span>];      <span class="comment">/* Section header string table index */</span></span><br><span class="line">&#125; Elf32_External_Ehdr;</span><br></pre></td></tr></table></figure>
+
+<h5 id="e-ident"><a href="#e-ident" class="headerlink" title="e_ident"></a><strong>e_ident</strong></h5><p>e_ident 是一个包含 16 字节的数组成员，对应 readelf -h 给出的 magic 部分.</p>
+<p>magic 部分就是我们所说的魔数，魔数通常就是自定义的识别码，对于 32 位的 elf 文件而言，magic 部分有 16 个字节.</p>
+<p>大部分的文件组织形式都是这样的，头部是一串特殊的识别码，标识该文件的一些概要信息，主要用于外部程序快速地对这个文件进行识别，快速地判断文件类型.</p>
+<p>但是 readelf 命令仅仅是显示了对应的二进制码，并没有进一步显示整个魔数字段的详细信息，关于这一部分就需要参考 readelf 源码来进行分析了，分析结果如下:</p>
+<ul>
+<li>  前四个字节:7f 45 4c 46，识别码， 0x45，0x4c，0x46 三个字节的 ascii 码对应 ELF 字母，通过这四个字节就可以判断文件是不是 elf 文件.</li>
+<li>  第五个字节:其中 01 表示 32 位 elf 文件，02 表示 64 位.</li>
+<li>  第六个字节:其中 01 表示 小端模式，02 表示 大端模式.</li>
+<li>  第七个字节:表示 EI_version，1 表示 EV_CURRENT，只有 1 才是合理的(代码中是 EI_versoin，但是博主没有进一步具体研究).</li>
+<li>  第八个字节: 00 表示 OS_ABI</li>
+<li>  第九个字节: 00 表示 ABI version</li>
+<li>  其它字段，源码中没有找到对应的解析，暂定为reserver.</li>
+</ul>
+<ul>
+<li>xx</li>
+</ul>
+<h5 id="e-type"><a href="#e-type" class="headerlink" title="e_type"></a>e_type</h5><p>type 表示 elf 文件的细分类型，总共有四种:</p>
+<ul>
+<li>  可重定位的目标文件</li>
+<li>  可执行文件</li>
+<li>  动态链接文件</li>
+<li>  coredump 文件，这是系统生成的调试文件.</li>
+</ul>
+<p>这四种类型的文件各有各的特点，比如可重定位的目标文件针对的是链接器.</p>
+<p>而可执行文件针对加载器，需要被静态加载到内存中执行，而动态链接文件则是运行过程中的加载.</p>
+<p>coredump 文件主要保存的是系统出错时的运行断点信息，方便人为地或者借助 gdb 分析 bug.</p>
+<h5 id="e-machine"><a href="#e-machine" class="headerlink" title="e_machine"></a>e_machine</h5><p>标识指定的机器，比如 40 代表 ARM.</p>
+<p>其它的比如 x86，mips 等都对应不同的编码.</p>
+<h5 id="e-version"><a href="#e-version" class="headerlink" title="e_version"></a>e_version</h5><p>四个字节的 version code</p>
+<h5 id="e-entry"><a href="#e-entry" class="headerlink" title="e_entry"></a>e_entry</h5><p>程序的入口虚拟地址，对于可重定位的目标文件默认是0，而对于可执行文件而言是真实的程序入口.</p>
+<p>程序入口是被加载器使用的，在程序加载过程中会读取该程序入口，作为应用程序的开始执行地址，在实际的加载过程中，内核加载完当前 elf 可执行文件之后其实并不是跳到该入口地址，而是先执行动态链接器代码，在动态链接完成之后才会跳到该入口地址。</p>
+<h5 id="e-phoff"><a href="#e-phoff" class="headerlink" title="e_phoff"></a>e_phoff</h5><p> program header table 的起始偏移地址，</p>
+<h5 id="e-shoff"><a href="#e-shoff" class="headerlink" title="e_shoff"></a>e_shoff</h5><p> section header table 的起始偏移地址，</p>
+<h5 id="e-flags"><a href="#e-flags" class="headerlink" title="e_flags"></a>e_flags</h5><p>和处理器相关的标志位集合，不同的处理器有不同的参数，根据 e_machine 进行解析.</p>
+<h5 id="e-ehsize"><a href="#e-ehsize" class="headerlink" title="e_ehsize"></a>e_ehsize</h5><p>指示 elf header 的 size，对于 arm 而言，52 或者 64.</p>
+<h5 id="e-phentsize"><a href="#e-phentsize" class="headerlink" title="e_phentsize"></a>e_phentsize</h5><p>每一个 program header 的 size，在可重定位目标文件中为 0.</p>
+<h5 id="e-phnum"><a href="#e-phnum" class="headerlink" title="e_phnum"></a>e_phnum</h5><p>该文件中一共有多少个 program header，在可重定位目标文件中为0.</p>
+<h5 id="e-shentsize"><a href="#e-shentsize" class="headerlink" title="e_shentsize"></a>e_shentsize</h5><p>文件中每一个section header 的大小，通常是 40.</p>
+<h5 id="e-shnum"><a href="#e-shnum" class="headerlink" title="e_shnum"></a>e_shnum</h5><p>该文件中一共有多少个 section header，上述的示例文件中为 10 个.</p>
+<h5 id="e-shstrndx"><a href="#e-shstrndx" class="headerlink" title="e_shstrndx"></a>e_shstrndx</h5><p>在 elf 格式的文件中，符号，section，文件的命名通常是字符串，这些字符串并不会保存在其对应的 section 中，而是统一地使用一个字符串表来保存，该字段指示节标题字符串所在的 section，在上面的示例中，section 标题(.text，.data，…)对应的 e_shstrndx 即段序号为 7，即保存在 .shstrtab 段中.这些 section 标题在链接的过程中需要使用到，在程序执行时是无用的，所以分开有利于精简 section 内容的大小，从而程序加载运行时需要更小的空间.</p>
+<p>除了 section 标题，还有符号名，文件名等字符串，这些默认会被保存在 .strtab section 中.</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">ELF</span>文件大小：</span><br><span class="line"><span class="variable">Size</span> <span class="operator">=</span> <span class="type">e_shoff</span> <span class="operator">+</span> <span class="type">e_shnum</span> <span class="operator">*</span> <span class="type">e_shentsize</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="text-Section"><a href="#text-Section" class="headerlink" title=".text Section"></a>.text Section</h4><p>​    <u><strong>==只读==</strong></u> <strong>代码</strong>节，存放所有函数的机器指令即程序代码，有些常量也会与指令一起存放在此节中（如字面量）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    a = a + <span class="number">100</span>;     <span class="comment">// 此处的100会与指令一并存放在该节</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="rodata-Section"><a href="#rodata-Section" class="headerlink" title=".rodata Section"></a>.rodata Section</h4><p>​    <strong><u>==只读==</u></strong> <strong>数据</strong>节，存放常量数据（如字符串常量）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> *str = <span class="string">&quot;HelloWorld!&quot;</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>,str);        <span class="comment">// 这里的“%s” 与 “HelloWorld！”会存放在该节</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="data-Section"><a href="#data-Section" class="headerlink" title=".data Section"></a>.data Section</h4><p>​    <u><strong>==可写==</strong></u> <strong>数据</strong>节，存放：</p>
+<ol>
+<li><p>已初始化的全局变量</p>
+   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> global = <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,global + <span class="number">10</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>已初始化的静态局部变量</p>
+   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">getCount</span><span class="params">(<span class="type">char</span> *arr)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> count = <span class="number">0</span>;         <span class="comment">// 该静态局部变量已被初始化</span></span><br><span class="line">    count += <span class="built_in">strlen</span>(arr);</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="bss-Section"><a href="#bss-Section" class="headerlink" title=".bss Section"></a>.bss Section</h4><p>​    <u><strong>==可写==</strong></u> <strong>数据</strong>节</p>
+<ol>
+<li><p>未初始化的全局变量</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> global;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,global + <span class="number">10</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>未初始化的静态局部变量</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">getCount</span><span class="params">(<span class="type">char</span> *arr)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> count;         <span class="comment">// 该静态局部变量未被初始化</span></span><br><span class="line">    count = <span class="built_in">strlen</span>(arr);</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  由于.bss节存放没有初始化的数据，所以其并不占有真实地存储空间，.bss 节在可重定位目标文件中只作占位符，当程序真正运行起来时才会在内存中开辟.bss节的空间，并为其中的数据赋上初始值（0）</p>
+</li>
+</ol>
+<hr>
+<h4 id="symtab-Section"><a href="#symtab-Section" class="headerlink" title=".symtab Section"></a>.symtab Section</h4><p>​    <strong>符号表</strong>（symbol table），用于存放可重定位目标文件中的 <strong>==定义==</strong> 与 <strong>==引用==</strong> 的全局符号信息，包括全局变量、函数.symtab</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">readelf -s main.o     <span class="comment"># 查看符号表</span></span><br><span class="line"></span><br><span class="line">gcc -s main.o -o main      <span class="comment"># 编译时剔除符号信息与重定位信息</span></span><br><span class="line">strip main.o   <span class="comment"># 丢弃目标文件中的符号</span></span><br></pre></td></tr></table></figure>
+
+<p>符号表包含很多条目，每个条目记录的就是一个符号的基本信息。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  Elf32_Word    st_name;                <span class="comment">/* Symbol name (string tbl index) */</span></span><br><span class="line">  Elf32_Addr    st_value;               <span class="comment">/* Symbol value */</span></span><br><span class="line">  Elf32_Word    st_size;                <span class="comment">/* Symbol size */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> st_info;                <span class="comment">/* Symbol type and binding */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> st_other;               <span class="comment">/* Symbol visibility */</span></span><br><span class="line">  Elf32_Section st_shndx;               <span class="comment">/* Section index */</span></span><br><span class="line">&#125; Elf32_Sym;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  Elf64_Word    st_name;                <span class="comment">/* Symbol name (string tbl index) */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> st_info;                <span class="comment">/* Symbol type and binding */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> st_other;               <span class="comment">/* Symbol visibility */</span></span><br><span class="line">  Elf64_Section st_shndx;               <span class="comment">/* Section index */</span></span><br><span class="line">  Elf64_Addr    st_value;               <span class="comment">/* Symbol value */</span></span><br><span class="line">  Elf64_Xword   st_size;                <span class="comment">/* Symbol size */</span></span><br><span class="line">&#125; Elf64_Sym;</span><br></pre></td></tr></table></figure>
+
+<p>​    <strong>1）name</strong></p>
+<p>​                    name中记录的并不是名字的字符串，我们前面说过所有的字符串都是放在了.strtab中。name里面只记录字符            串在 <strong>.strtab</strong> 中的偏移，通过这个偏移就能在 <strong>.strtab</strong> 中索引到符号的名字。</p>
+<p>​            e.g.</p>
+<p>​                name = 5 //偏移5<br>​                假如.strtab中的内容为main\0fun2\0a_va\0……<br>​                使用偏移5到.strtab中进行搜索，当遇到\0时就截止，那么取出来的就是符号fun2。</p>
+<p>​    <strong>2）value</strong></p>
+<p>​            放的是地址：指向符号所代表的空间。不过对于.o（可重定位目标文件）和可执行目标文件来说，value的值有所不        同。</p>
+<ul>
+<li>  可重定位目标文件</li>
+</ul>
+<p>​                    value总中放的只是相对于节起始地址的偏移。</p>
+<ul>
+<li>  可执行目标文件</li>
+</ul>
+<p>​                    value中放的是绝对地址。“可重定位目标文件”被连接在一起后，value中放的是链接时重定位后的绝对地址。</p>
+<p>​    <strong>3）size</strong></p>
+<p>​            size代表的是value所指向空间的大小，毕竟value只是起始地址，不能说明空间的大小。</p>
+<p>​            比如：</p>
+<ul>
+<li><p>​    如果符号是初始化了的全局变量的话<br>  ​     size代表的全局变量在.data中所占字节数。</p>
+</li>
+<li><p>如果符号是函数的话</p>
+<pre><code>   size代表的是函数指令在.text中所占空间的大小
+</code></pre>
+</li>
+</ul>
+<p>​    <strong>4）type</strong></p>
+<p>​        符号类型，大致有如下几种类型。</p>
+<ul>
+<li>  FUNC：符号代表的是函数</li>
+<li>  OBJECT：符号代表的是全局变量</li>
+<li>  FILE：符号是源文件的名字</li>
+<li>  SECTION：该符号关联的实体是个节，用于重定位</li>
+<li>  COMMON：未初始化的全局变量，储存在.bss节</li>
+<li>  NOTYPE：未知或未指定类型</li>
+<li>  WEAK：弱符号，在链接时忽略弱符号的声明，采纳强符号的定义，可用来解决多文件符号冲突问题</li>
+</ul>
+<p>​    <strong>5）bind</strong></p>
+<p>​            就两种情况，LCOAL、GLOBAL</p>
+<ul>
+<li>  bind=LOCAL</li>
+</ul>
+<p>​                    表示符号是本地的：符号在模块中定义后，只能由本模块引用，static修饰的全局变量和函数就是这种情况。</p>
+<ul>
+<li>  bind=CLOBAL(全局符号)</li>
+</ul>
+<p>​                    表示符号在本模块定义，但是可以被其它模块引用（使用），extern修饰的全局变量和函数就是这种情况。</p>
+<p>​    <strong>6）section</strong></p>
+<p>​        section的值有四种情况，节索引号、ABS、UNDEF、COM</p>
+<ul>
+<li>  section=节索引号</li>
+</ul>
+<p>​                说明符号所对应的空间在哪个节里面。</p>
+<ul>
+<li>  section=ABS</li>
+</ul>
+<p>​                表示该符号不需要被“链接程序”处理。</p>
+<p>​                比如，如果符号名是***.c，这个符号不是全局变量、不是函数，只是一个源文件名而已，链接器（ld/collect2）            在链接“可重定位目标文件”时，这个符号不需要被处理。</p>
+<ul>
+<li>  section=UNDEF</li>
+</ul>
+<p>​                表示这个符号，只是在本模块中被引用了，这个符号并不是由本模块定义的，表示这个符号被定义在了其它模块            中，链接时要到其它模块中去找搜寻它的定义。</p>
+<ul>
+<li><p>section=COM</p>
+<p>  表示还未被分配空间（位置）的未初始化的数据目标，比如未初始化的全局变量(.bss)。</p>
+</li>
+</ul>
+<p>​    .symtab 所记录的符号，严格说起来就两种：</p>
+<ol>
+<li>全局符号（由extern修饰的全局变量或函数）<ul>
+<li>  在本地文件声明，在其他文件中被引用</li>
+<li>  在其他文件声明，在本地文件中被引用</li>
+</ul>
+</li>
+<li>本地符号（由static修饰的静态变量或函数）<ul>
+<li>  在本地文件声明，且只能在本模块中使用</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="rel-text-Section-及-rel-data-Section"><a href="#rel-text-Section-及-rel-data-Section" class="headerlink" title=".rel.text Section 及 .rel.data Section"></a>.rel.text Section 及 .rel.data Section</h4><p>​    用于多个.o文件链接在一起时，需要根据这两个节中的重定位信息，将各个文件中的 .text节 与 data节分别整合 </p>
+<h4 id="debug-Section-及-line-Section"><a href="#debug-Section-及-line-Section" class="headerlink" title=".debug Section 及 .line Section"></a>.debug Section 及 .line Section</h4><p>​    前者存放调试信息，后者存放代码行号信息，编译时需要加入 -g 选项后，才会在这两节中存放相关调试信息</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -g main.c -o main</span><br></pre></td></tr></table></figure>
+
+<h4 id="strtab-Section"><a href="#strtab-Section" class="headerlink" title=".strtab Section"></a>.strtab Section</h4><p>​    字符串表，挨个存放：</p>
+<ul>
+<li>  .symtab 所用的符号名字</li>
+<li>  .debug 所用到的符号名字</li>
+<li>  每个节的段名</li>
+<li>  源文件名字</li>
+<li>  等等</li>
+</ul>
+<h4 id="Section-Header-Table"><a href="#Section-Header-Table" class="headerlink" title="Section Header Table"></a>Section Header Table</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  Elf32_Word sh_name; <span class="comment">/* Section name (string tbl index) */</span></span><br><span class="line">  Elf32_Word sh_type; <span class="comment">/* Section type */</span></span><br><span class="line">  Elf32_Word sh_flags; <span class="comment">/* Section flags */</span></span><br><span class="line">  Elf32_Addr sh_addr; <span class="comment">/* Section virtual addr at execution */</span></span><br><span class="line">  Elf32_Off sh_offset; <span class="comment">/* Section file offset */</span></span><br><span class="line">  Elf32_Word sh_size; <span class="comment">/* Section size in bytes */</span></span><br><span class="line">  Elf32_Word sh_link; <span class="comment">/* Link to another section */</span></span><br><span class="line">  Elf32_Word sh_info; <span class="comment">/* Additional section information */</span></span><br><span class="line">  Elf32_Word sh_addralign; <span class="comment">/* Section alignment */</span></span><br><span class="line">  Elf32_Word sh_entsize; <span class="comment">/* Entry size if section holds table */</span></span><br><span class="line">&#125; Elf32_Shdr;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">readelf -S main.o</span><br></pre></td></tr></table></figure>
+
+
+
+<ol>
+<li><p>  节名称</p>
+</li>
+<li><p>  节的类型</p>
+</li>
+<li><p>  节的属性（读写权限）</p>
+</li>
+<li><p>  节在ELF文件中所占的长度</p>
+</li>
+<li><p>  节的对齐方式</p>
+</li>
+<li><p>  偏移量</p>
+</li>
+</ol>
+<hr>
+<h3 id="ELF格式可执行目标文件"><a href="#ELF格式可执行目标文件" class="headerlink" title="ELF格式可执行目标文件"></a>ELF格式可执行目标文件</h3><p><img src="https://img-blog.csdnimg.cn/img_convert/494d134bb25941bf46aba57ba98b4f5c.png" alt="ELF和sectionheadertable(节头表)"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">phrara</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/post/8e41db39/">http://example.com/post/8e41db39/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a></div><div class="post_share"><div class="social-share" data-image="/img/c4.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/post/f2b485e3/"><img class="prev-cover" src="/img/c5.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">GFS-解读</div></div></a></div><div class="next-post pull-right"><a href="/post/26cc52b5/"><img class="next-cover" src="/img/c6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Etcd 学习</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/photo.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">phrara</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/phrara/"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">到达世界最高城!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">汇编知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">汇编语言的组成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8086PC-%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E5%88%86%E9%85%8D"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">8086PC 内存地址分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Debug%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">Debug程序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.1.</span> <span class="toc-text">通用寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.1.1.</span> <span class="toc-text">数据寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MOV-amp-ADD-amp-SUB-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">MOV &amp; ADD &amp; SUB 指令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">地址寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CS-IP-%E4%BB%A3%E7%A0%81%E6%AE%B5"><span class="toc-number">1.1.3.</span> <span class="toc-text">CS : IP 代码段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JMP-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">JMP 指令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DS-Offset-%E6%95%B0%E6%8D%AE%E6%AE%B5"><span class="toc-number">1.1.4.</span> <span class="toc-text">DS : [Offset] 数据段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SS-SP-%E5%A0%86%E6%A0%88%E6%AE%B5"><span class="toc-number">1.1.5.</span> <span class="toc-text">SS : SP 堆栈段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PUSH-amp-POP-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">PUSH &amp; POP 指令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="toc-number">1.2.</span> <span class="toc-text">源代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BX-amp-LOOP-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.3.</span> <span class="toc-text">[BX] &amp; LOOP 指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#INC-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.3.1.</span> <span class="toc-text">INC 指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DEC-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.3.2.</span> <span class="toc-text">DEC 指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DW-%E4%BC%AA%E6%8C%87%E4%BB%A4-amp-start-%E6%A0%87%E5%8F%B7"><span class="toc-number">1.4.</span> <span class="toc-text">DW 伪指令 &amp; start 标号</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5"><span class="toc-number">1.4.1.</span> <span class="toc-text">分段</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E5%AE%9A%E4%BD%8D%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-number">1.5.</span> <span class="toc-text">地址定位与数据处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AND-amp-OR-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.5.1.</span> <span class="toc-text">AND &amp; OR 指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XOR-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.5.2.</span> <span class="toc-text">XOR 指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9E%8B%E6%95%B0%E6%8D%AE-amp-DB-%E4%BC%AA%E6%8C%87%E4%BB%A4"><span class="toc-number">1.5.3.</span> <span class="toc-text">字符串型数据 &amp; DB 伪指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%81%B5%E6%B4%BB%E5%AE%9A%E4%BD%8D-amp-DI-amp-SI-amp-BP"><span class="toc-number">1.5.4.</span> <span class="toc-text">灵活定位 &amp; DI &amp; SI &amp; BP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#X-PTR"><span class="toc-number">1.5.5.</span> <span class="toc-text">X PTR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DIV-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.5.6.</span> <span class="toc-text">DIV 指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DD-%E4%BC%AA%E6%8C%87%E4%BB%A4"><span class="toc-number">1.5.7.</span> <span class="toc-text">DD 伪指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DUP-%E4%BC%AA%E6%8C%87%E4%BB%A4"><span class="toc-number">1.5.8.</span> <span class="toc-text">DUP 伪指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMP%E6%8C%87%E4%BB%A4%E5%8E%9F%E7%90%86"><span class="toc-number">1.6.</span> <span class="toc-text">JMP指令原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OFFSET-%E4%BC%AA%E6%8C%87%E4%BB%A4"><span class="toc-number">1.6.1.</span> <span class="toc-text">OFFSET 伪指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JMP%E6%8C%87%E4%BB%A4%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.6.2.</span> <span class="toc-text">JMP指令的用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E6%9D%A1%E4%BB%B6%E8%BD%AC%E7%A7%BB%E6%8C%87%E4%BB%A4"><span class="toc-number">1.6.3.</span> <span class="toc-text">有条件转移指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E6%93%8D%E4%BD%9C"><span class="toc-number">1.7.</span> <span class="toc-text">栈操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RET-amp-RETF-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.7.1.</span> <span class="toc-text">RET &amp; RETF 指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CALL-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.7.2.</span> <span class="toc-text">CALL 指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BP%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.7.3.</span> <span class="toc-text">BP寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E5%8E%8B%E6%A0%88"><span class="toc-number">1.7.4.</span> <span class="toc-text">参数压栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LEA-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.7.5.</span> <span class="toc-text">LEA 指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MUL-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.7.6.</span> <span class="toc-text">MUL 指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98"><span class="toc-number">1.7.7.</span> <span class="toc-text">寄存器冲突问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.8.</span> <span class="toc-text">标志寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-number">1.8.1.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZF-%E6%A0%87%E5%BF%97"><span class="toc-number">1.8.2.</span> <span class="toc-text">ZF 标志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PF-%E6%A0%87%E5%BF%97"><span class="toc-number">1.8.3.</span> <span class="toc-text">PF 标志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SF-%E6%A0%87%E5%BF%97"><span class="toc-number">1.8.4.</span> <span class="toc-text">SF 标志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF-%E6%A0%87%E5%BF%97"><span class="toc-number">1.8.5.</span> <span class="toc-text">CF 标志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OF-%E6%A0%87%E5%BF%97"><span class="toc-number">1.8.6.</span> <span class="toc-text">OF 标志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ADC-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.8.7.</span> <span class="toc-text">ADC 指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SBB-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.8.8.</span> <span class="toc-text">SBB 指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMP-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.8.9.</span> <span class="toc-text">CMP 指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TEST-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.8.10.</span> <span class="toc-text">TEST 指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E6%A0%87%E5%BF%97%E4%BD%8D%E7%9B%B8%E5%85%B3%E7%9A%84%E6%9D%A1%E4%BB%B6%E8%BD%AC%E7%A7%BB%E6%8C%87%E4%BB%A4"><span class="toc-number">1.8.11.</span> <span class="toc-text">与标志位相关的条件转移指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DF-%E6%A0%87%E5%BF%97-amp-%E4%B8%B2%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4"><span class="toc-number">1.8.12.</span> <span class="toc-text">DF 标志 &amp; 串传送指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MOVSB-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.8.12.1.</span> <span class="toc-text">MOVSB 指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MOVSW-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.8.12.2.</span> <span class="toc-text">MOVSW 指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8E-REP-%E7%9A%84%E9%85%8D%E5%90%88"><span class="toc-number">1.8.12.3.</span> <span class="toc-text">与 REP 的配合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CLD-amp-STD-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.8.12.4.</span> <span class="toc-text">CLD &amp; STD 指令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PUSHF-amp-POPF-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.8.13.</span> <span class="toc-text">PUSHF &amp; POPF 指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8%E5%9C%A8Debug%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">1.8.14.</span> <span class="toc-text">标志寄存器在Debug中的表示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E4%B8%AD%E6%96%AD"><span class="toc-number">1.9.</span> <span class="toc-text">内中断</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#32%E4%BD%8D%E9%80%86%E5%90%91"><span class="toc-number">2.</span> <span class="toc-text">32位逆向</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%AB%AF%E5%BA%8F-amp-%E5%A4%A7%E7%AB%AF%E5%BA%8F"><span class="toc-number">2.1.</span> <span class="toc-text">小端序&amp;大端序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IA-32%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.2.</span> <span class="toc-text">IA-32寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.2.1.</span> <span class="toc-text">基本程序运行寄存器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E5%B8%A7"><span class="toc-number">2.3.</span> <span class="toc-text">栈帧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.4.</span> <span class="toc-text">PE文件格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DOS-%E5%A4%B4"><span class="toc-number">2.4.1.</span> <span class="toc-text">DOS 头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOS-stub"><span class="toc-number">2.4.2.</span> <span class="toc-text">DOS stub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NT-%E5%A4%B4"><span class="toc-number">2.4.3.</span> <span class="toc-text">NT 头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NT-%EF%BC%9A%E6%96%87%E4%BB%B6%E5%A4%B4"><span class="toc-number">2.4.4.</span> <span class="toc-text">NT ：文件头</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">编译过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">3.1.</span> <span class="toc-text">预处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91"><span class="toc-number">3.2.</span> <span class="toc-text">编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%87%E7%BC%96"><span class="toc-number">3.3.</span> <span class="toc-text">汇编</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5"><span class="toc-number">3.4.</span> <span class="toc-text">链接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5"><span class="toc-number">3.4.1.</span> <span class="toc-text">静态链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5"><span class="toc-number">3.4.2.</span> <span class="toc-text">动态链接</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">目标文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.1.</span> <span class="toc-text">目标文件类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%87%8D%E5%AE%9A%E4%BD%8D%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6"><span class="toc-number">4.1.1.</span> <span class="toc-text">可重定位目标文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6"><span class="toc-number">4.1.2.</span> <span class="toc-text">可执行目标文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B1%E4%BA%AB%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6"><span class="toc-number">4.1.3.</span> <span class="toc-text">共享目标文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.2.</span> <span class="toc-text">目标文件格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#UNIX%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.2.1.</span> <span class="toc-text">UNIX系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.2.2.</span> <span class="toc-text">Windows系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.2.3.</span> <span class="toc-text">Linux系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ELF%E6%A0%BC%E5%BC%8F%E5%8F%AF%E9%87%8D%E5%AE%9A%E4%BD%8D%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6"><span class="toc-number">4.2.4.</span> <span class="toc-text">ELF格式可重定位目标文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84%E5%9B%BE"><span class="toc-number">4.2.4.1.</span> <span class="toc-text">组成结构图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ELF-Header"><span class="toc-number">4.2.4.2.</span> <span class="toc-text">ELF Header</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#e-ident"><span class="toc-number">4.2.4.2.1.</span> <span class="toc-text">e_ident</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#e-type"><span class="toc-number">4.2.4.2.2.</span> <span class="toc-text">e_type</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#e-machine"><span class="toc-number">4.2.4.2.3.</span> <span class="toc-text">e_machine</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#e-version"><span class="toc-number">4.2.4.2.4.</span> <span class="toc-text">e_version</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#e-entry"><span class="toc-number">4.2.4.2.5.</span> <span class="toc-text">e_entry</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#e-phoff"><span class="toc-number">4.2.4.2.6.</span> <span class="toc-text">e_phoff</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#e-shoff"><span class="toc-number">4.2.4.2.7.</span> <span class="toc-text">e_shoff</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#e-flags"><span class="toc-number">4.2.4.2.8.</span> <span class="toc-text">e_flags</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#e-ehsize"><span class="toc-number">4.2.4.2.9.</span> <span class="toc-text">e_ehsize</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#e-phentsize"><span class="toc-number">4.2.4.2.10.</span> <span class="toc-text">e_phentsize</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#e-phnum"><span class="toc-number">4.2.4.2.11.</span> <span class="toc-text">e_phnum</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#e-shentsize"><span class="toc-number">4.2.4.2.12.</span> <span class="toc-text">e_shentsize</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#e-shnum"><span class="toc-number">4.2.4.2.13.</span> <span class="toc-text">e_shnum</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#e-shstrndx"><span class="toc-number">4.2.4.2.14.</span> <span class="toc-text">e_shstrndx</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#text-Section"><span class="toc-number">4.2.4.3.</span> <span class="toc-text">.text Section</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rodata-Section"><span class="toc-number">4.2.4.4.</span> <span class="toc-text">.rodata Section</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#data-Section"><span class="toc-number">4.2.4.5.</span> <span class="toc-text">.data Section</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bss-Section"><span class="toc-number">4.2.4.6.</span> <span class="toc-text">.bss Section</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#symtab-Section"><span class="toc-number">4.2.4.7.</span> <span class="toc-text">.symtab Section</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rel-text-Section-%E5%8F%8A-rel-data-Section"><span class="toc-number">4.2.4.8.</span> <span class="toc-text">.rel.text Section 及 .rel.data Section</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#debug-Section-%E5%8F%8A-line-Section"><span class="toc-number">4.2.4.9.</span> <span class="toc-text">.debug Section 及 .line Section</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#strtab-Section"><span class="toc-number">4.2.4.10.</span> <span class="toc-text">.strtab Section</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Section-Header-Table"><span class="toc-number">4.2.4.11.</span> <span class="toc-text">Section Header Table</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ELF%E6%A0%BC%E5%BC%8F%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6"><span class="toc-number">4.2.5.</span> <span class="toc-text">ELF格式可执行目标文件</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/post/19ce5f52/" title="DGA域名"><img src="/img/c3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DGA域名"/></a><div class="content"><a class="title" href="/post/19ce5f52/" title="DGA域名">DGA域名</a><time datetime="2023-04-12T15:10:39.302Z" title="Created 2023-04-12 23:10:39">2023-04-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/9c057035/" title="带状疱疹病史"><img src="/img/c5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="带状疱疹病史"/></a><div class="content"><a class="title" href="/post/9c057035/" title="带状疱疹病史">带状疱疹病史</a><time datetime="2023-04-10T10:14:32.521Z" title="Created 2023-04-10 18:14:32">2023-04-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/8e372fbf/" title="K8s(1)"><img src="/img/c6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="K8s(1)"/></a><div class="content"><a class="title" href="/post/8e372fbf/" title="K8s(1)">K8s(1)</a><time datetime="2023-03-27T14:32:35.961Z" title="Created 2023-03-27 22:32:35">2023-03-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/7fb3659b/" title="docker学习"><img src="/img/c3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker学习"/></a><div class="content"><a class="title" href="/post/7fb3659b/" title="docker学习">docker学习</a><time datetime="2023-03-14T10:15:04.071Z" title="Created 2023-03-14 18:15:04">2023-03-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/3e9a9d51/" title="IPFS Windows"><img src="/img/c2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="IPFS Windows"/></a><div class="content"><a class="title" href="/post/3e9a9d51/" title="IPFS Windows">IPFS Windows</a><time datetime="2022-10-09T14:17:50.000Z" title="Created 2022-10-09 22:17:50">2022-10-09</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/c4.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By phrara</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><div class="aplayer no-destroy" data-id="3013413533" data-server="tencent" data-type="playlist" data-fixed="true" data-autoplay="true"></div><script id="canvas_nest" defer="defer" color="248,245,214" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="/img/mov.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://unpkg.zhimg.com/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end --></body></html>

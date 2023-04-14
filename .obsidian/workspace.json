@@ -1,0 +1,201 @@
+{
+  "main": {
+    "id": "fab64dfaf3e26c1b",
+    "type": "split",
+    "children": [
+      {
+        "id": "6663411771b7effa",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "595d6538826525f8",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "de40edb2ba650824",
+    "type": "split",
+    "children": [
+      {
+        "id": "f4415bd8b70c6044",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "08cbf660bb1e802e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "02905d8444b0392d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "4337b4de825a770e",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 256
+  },
+  "right": {
+    "id": "ab23627d9814738c",
+    "type": "split",
+    "children": [
+      {
+        "id": "38f00805e673f0fb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5f600fef47a07428",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ab4e2fdef06483d7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "a86ee9681d68485e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "b2af43f00bb55207",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          },
+          {
+            "id": "2930fa73e54431b8",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 279
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
+    }
+  },
+  "active": "595d6538826525f8",
+  "lastOpenFiles": [
+    "node_modules/hexo-git-backup/node_modules/warehouse/lib/types/virtual.js",
+    "node_modules/hexo-git-backup/node_modules/warehouse/lib/types/object.js",
+    "node_modules/hexo-git-backup/node_modules/warehouse/lib/types/string.js",
+    "node_modules/hexo-git-backup/node_modules/warehouse/lib/types/number.js",
+    "node_modules/hexo-git-backup/node_modules/warehouse/lib/types/index.js",
+    "node_modules/hexo-git-backup/node_modules/warehouse/lib/types/integer.js",
+    "node_modules/hexo-git-backup/node_modules/warehouse/lib/types/enum.js",
+    "node_modules/hexo-git-backup/node_modules/warehouse/lib/types/date.js",
+    "node_modules/hexo-git-backup/node_modules/warehouse/lib/types/cuid.js",
+    "node_modules/hexo-git-backup/node_modules/warehouse/lib/types/boolean.js",
+    "node_modules/hexo-git-backup/node_modules/warehouse/lib/types/buffer.js",
+    "node_modules/hexo-git-backup/node_modules/highlight.js/styles/school-book.png",
+    "node_modules/hexo-git-backup/node_modules/highlight.js/scss/school-book.png",
+    "node_modules/hexo-git-backup/node_modules/highlight.js/styles/brown-papersq.png",
+    "node_modules/hexo-git-backup/node_modules/highlight.js/scss/pojoaque.jpg",
+    "node_modules/hexo-git-backup/node_modules/highlight.js/scss/brown-papersq.png",
+    "node_modules/hexo-git-backup/node_modules/highlight.js/README.md",
+    "node_modules/hexo-git-backup/node_modules/cheerio/Readme.md",
+    "node_modules/hexo-git-backup/node_modules/cheerio/History.md",
+    "node_modules/hexo-git-backup/node_modules/async/README.md",
+    "node_modules/hexo-git-backup/node_modules/hexo-fs/README.md",
+    "node_modules/hexo-git-backup/node_modules/hexo-i18n/README.md",
+    "node_modules/hexo-git-backup/node_modules/highlight.js/styles/pojoaque.jpg",
+    "node_modules/hexo-git-backup/node_modules/hexo-cli/completion/README.md",
+    "node_modules/hexo-git-backup/node_modules/hexo-cli/README.md",
+    "node_modules/hexo-git-backup/node_modules/readdirp/node_modules/readable-stream/CONTRIBUTING.md",
+    "node_modules/hexo-git-backup/node_modules/warehouse/README.md",
+    "node_modules/hexo-git-backup/node_modules/readdirp/node_modules/readable-stream/doc/wg-meetings/2015-01-30.md",
+    "node_modules/hexo-git-backup/node_modules/tildify/readme.md",
+    "node_modules/hexo-git-backup/node_modules/ansi-regex/readme.md",
+    "node_modules/swig-templates/node_modules/async/README.md",
+    "node_modules/uglify-js/node_modules/async/README.md",
+    "node_modules/hexo-git-backup/node_modules/cross-spawn/README.md",
+    "node_modules/swig-templates/node_modules/yargs/CHANGELOG.md",
+    "node_modules/swig-templates/node_modules/yargs/README.md",
+    "node_modules/swig-templates/node_modules/uglify-js/README.md",
+    "node_modules/lodash.reject/README.md",
+    "node_modules/uglify-js/node_modules/source-map/CHANGELOG.md",
+    "node_modules/uglify-js/node_modules/source-map/README.md",
+    "node_modules/swig-templates/README.md",
+    "node_modules/swig-templates/HISTORY.md",
+    "node_modules/swig-templates/CHANGELOG.md",
+    "source/_posts/DGA域名/markov.png",
+    "source/_posts/DGA域名/markov.png",
+    "0628531F.png",
+    "06284525.png",
+    "未命名.canvas"
+  ]
+}

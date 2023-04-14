@@ -1,0 +1,384 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>DGA域名 | 1!5!</title><meta name="keywords" content="DGA"><meta name="author" content="phrara"><meta name="copyright" content="phrara"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f8f5d6"><meta name="description" content="简介 DGA（Domain generation algorithms），中文名：域名生成算法，其可以生成大量随机的域名来供恶意软件连接C&amp;C控制服务器。 恶意软件编写者将采用同样的种子和算法生成与恶意软件相同的域名列表，从中选取几个来作为控制服务器，恶意软件会持续解析这些域名，直到发现可用的服务器地址。  C2 &amp; DGA 很显然，在这种方式下，传统基于黑名单的防护手段无法起作用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DGA域名">
+<meta property="og:url" content="http://example.com/post/19ce5f52/index.html">
+<meta property="og:site_name" content="1!5!">
+<meta property="og:description" content="简介 DGA（Domain generation algorithms），中文名：域名生成算法，其可以生成大量随机的域名来供恶意软件连接C&amp;C控制服务器。 恶意软件编写者将采用同样的种子和算法生成与恶意软件相同的域名列表，从中选取几个来作为控制服务器，恶意软件会持续解析这些域名，直到发现可用的服务器地址。  C2 &amp; DGA 很显然，在这种方式下，传统基于黑名单的防护手段无法起作用">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/c3.png">
+<meta property="article:published_time" content="2023-04-12T15:10:39.302Z">
+<meta property="article:modified_time" content="2023-04-14T08:37:34.375Z">
+<meta property="article:author" content="phrara">
+<meta property="article:tag" content="DGA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/c3.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/post/19ce5f52/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'DGA域名',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-14 16:37:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f8f5d6')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/mouse.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://unpkg.zhimg.com/hexo-butterfly-clock/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/photo.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">13</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> Gifts</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/c3.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">1!5!</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> Gifts</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">DGA域名</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-04-12T15:10:39.302Z" title="Created 2023-04-12 23:10:39">2023-04-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-04-14T08:37:34.375Z" title="Updated 2023-04-14 16:37:34">2023-04-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/security/">security</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="DGA域名"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><blockquote>
+<p>DGA（Domain generation algorithms），中文名：<strong>域名生成算法</strong>，其可以生成大量随机的域名来供恶意软件连接C&amp;C控制服务器。 恶意软件编写者将采用同样的种子和算法生成与恶意软件相同的域名列表，从中选取几个来作为控制服务器，恶意软件会持续解析这些域名，直到发现可用的服务器地址。</p>
+</blockquote>
+<h2 id="C2-amp-DGA"><a href="#C2-amp-DGA" class="headerlink" title="C2 &amp; DGA"></a>C2 &amp; DGA</h2><p><img src="/post/19ce5f52/C2DGA.png" alt="C&amp;C攻击下的运用"></p>
+<p>很显然，在这种方式下，传统基于黑名单的防护手段无法起作用：</p>
+<ol>
+<li> 黑名单的更新速度远远赶不上DGA域名的生成速度；</li>
+<li>一般来说，一个DGA域名的存活时间通常在1-7天左右；</li>
+<li>防御者必须阻断所有的DGA域名才能阻断C2通信；<br>因此，DGA域名的使用使得攻击容易，隐蔽性提高，防御变得困难。</li>
+</ol>
+<p>最近使用 DGA 创建命令和控制 (C&amp;C) 服务器的恶意软件攻击示例包括 Conficker、Zeus 和 Dyre。</p>
+<h1 id="DGA域名分类"><a href="#DGA域名分类" class="headerlink" title="DGA域名分类"></a>DGA域名分类</h1><p>DGA算法由两部分构成，种子（算法输入）和算法，可以根据种子和算法对DGA域名进行分类，DGA域名可以表示为AGD（Algorithmically-Generated Domains）。</p>
+<h2 id="按照种子进行分类"><a href="#按照种子进行分类" class="headerlink" title="按照种子进行分类"></a>按照种子进行分类</h2><ul>
+<li><p><strong>基于时间的种子（Time dependence）</strong>。DGA算法将会使用时间信息作为输入，如：感染主机的系统时间，http响应的时间等。</p>
+</li>
+<li><p><strong>是否具有确定性（Determinism）</strong>。主流的DGA算法的输入是确定的，因此AGD可以被提前计算，但是也有一些DGA算法的输入是不确定的，如：<code>Bedep</code>以欧洲中央银行每天发布的外汇参考汇率作为种子，<code>Torpig</code>用twitter的关键词作为种子，只有在确定时间窗口内注册域名才能生效。</p>
+</li>
+</ul>
+<p>根据种子的分类方法，DGA域名可以分为以下4类：</p>
+<p><strong>1. TID（time-independent and deterministic）</strong>，与时间不相关，可确定；<br><strong>2. TDD（time-dependent and deterministic）</strong>，与时间相关，可确定；<br><strong>3. TDN（time-dependent and non-deterministic）</strong>，与时间相关，不可确定；<br><strong>4. TIN（time-independent and non-deterministic</strong>），与时间不相关，不可确定；</p>
+<h2 id="按照生成算法进行分类"><a href="#按照生成算法进行分类" class="headerlink" title="按照生成算法进行分类"></a>按照生成算法进行分类</h2><p>现有DGA生成算法一般可以分为如下4类：</p>
+<ul>
+<li><strong>基于算术（Arithmetic-based）</strong>：该类型算法会生成一组可用ASCII编码表示的值，从而构成DGA域名，流行度最高；实现简单，规律性强</li>
+<li><strong>基于哈希（Hash-based）</strong>：用哈希值的16进制表示产生的DGA域名，常使用的哈希算法有：MD5，SHA256；混乱度高，可预测性低</li>
+<li><strong>基于词典（Wordlist-based）</strong>：该方式会从专有词典中挑选单词进行组合，减少域名字符上的随机性，迷惑性更强，词典内嵌在恶意程序中或者从公有服务中提取；</li>
+<li><strong>基于排列组合（或称置换，Permutation-based）</strong>：对一个初始域名进行字符上的排列组合。</li>
+</ul>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><table>
+<thead>
+<tr>
+<th align="center">family</th>
+<th align="center">category</th>
+<th align="center">example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">fobber</td>
+<td align="center">Arithmetic-based &amp; TID</td>
+<td align="center">yomaebzlsinlytabp.net</td>
+</tr>
+<tr>
+<td align="center">simda</td>
+<td align="center">Permutation-based &amp; TID</td>
+<td align="center">qexyfag.com</td>
+</tr>
+<tr>
+<td align="center">verblecon</td>
+<td align="center">Hash-based &amp; TDD</td>
+<td align="center">03d4b0f5a86d723f81d534a4eb1638de.tk</td>
+</tr>
+<tr>
+<td align="center">pizd</td>
+<td align="center">Wordlist-based &amp; TDD</td>
+<td align="center">effortpossible.net</td>
+</tr>
+<tr>
+<td align="center">Orchard</td>
+<td align="center">Hash-based &amp; TDN</td>
+<td align="center">8992a8e4.duckdns.org</td>
+</tr>
+</tbody></table>
+<h3 id="Orchard"><a href="#Orchard" class="headerlink" title="Orchard"></a>Orchard</h3><ul>
+<li>  Orchard是一个使用了DGA技术的僵尸网络(botnet)家族，核心功能是在受害者机器上安装各种恶意软件。</li>
+<li>从2021年2月至2022年5月，先后检测到3个版本的Orchard样本，均使用了DGA技术。</li>
+<li>  Orchard的DGA算法一直未变，但日期的使用方式一直在变，最新版同时支持使用比特币账号信息来生成单独的DGA域名。</li>
+<li>  Orchard目前仍在活跃，致力于门罗币挖矿。</li>
+</ul>
+<p><strong>Orchard的工作流程</strong><br><img src="/post/19ce5f52/orchard.png"></p>
+<p><strong>探测到的感染规模</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># v1, orcharddns.duckdns.org</span><br><span class="line">37,   45.61.185.36</span><br><span class="line">413,  45.61.186.52</span><br><span class="line">1301, 45.61.187.240</span><br><span class="line">207,  205.185.124.143</span><br><span class="line"></span><br><span class="line"># v2, orchardmaster.duckdns.org</span><br><span class="line">45,   45.61.185.36</span><br><span class="line">104,  45.61.186.52</span><br><span class="line">659,  45.61.187.240</span><br><span class="line"></span><br><span class="line"># v3, ojena.duckdns.org</span><br><span class="line">418,  45.61.185.231</span><br></pre></td></tr></table></figure>
+
+
+<p>Orchard v3 DGA域名不但使用日期信息，还会同时使用中本聪的比特币账号交易信息来生成DGA域名。因为比特币交易的不确定性，该技术比使用时间生成的DGA更难以检测，因而防御难度更大。</p>
+<blockquote>
+<p>结合长期的跟踪结果和其它维度的信息，我们认为Orchard会是一个长期活跃、持续发展的botnet家族，值得警惕。<br><strong>原文出处</strong>: <a target="_blank" rel="noopener" href="https://blog.netlab.360.com/orchard-dga/">https://blog.netlab.360.com/orchard-dga/</a></p>
+</blockquote>
+<hr>
+<h1 id="DGA域名检测"><a href="#DGA域名检测" class="headerlink" title="DGA域名检测"></a>DGA域名检测</h1><h2 id="基于黑名单的检测与防护"><a href="#基于黑名单的检测与防护" class="headerlink" title="基于黑名单的检测与防护"></a>基于黑名单的检测与防护</h2><p>大多数DGA算法都具有时间相关和确定性，即它们的生成参数是可获取和可重用的，因此其生成的结果时可预测的。基于此特点，可以对每个恶意软件及其变体进行逆向分析获得域名生成算法和种子，从而提取给定日期和时间的有效域名集合，加入黑名单进行DGA域名检测。</p>
+<p>但是，有几点关键缺陷：</p>
+<ol>
+<li>黑名单的更新速度远远赶不上DGA域名的生成速度，例如TDD型，linux内核高精度时钟可提供纳秒级别精度的时间数值，那么可产生的DGA域名不计其数；</li>
+<li>TDN与TIN型DGA域名的黑名单难以构建；</li>
+<li>DGA变种数量庞大，开源黑名单的DGA覆盖率低。<br>因此，粗暴用DGA构建黑名单的方法可行性不高，并不能解决根本问题。</li>
+</ol>
+<h2 id="基于第三方信息的检测"><a href="#基于第三方信息的检测" class="headerlink" title="基于第三方信息的检测"></a>基于第三方信息的检测</h2><ul>
+<li>基于域名注册状态的检测<ul>
+<li>域名注册时间</li>
+<li>域名使用度</li>
+<li>域名审核级别</li>
+</ul>
+</li>
+<li>基于威胁情报平台提供的信息(DGA数据集等)进行检测<ul>
+<li>306netlab dga 360dga数据集  </li>
+<li>virustotal.com virustotal平台  </li>
+<li>x.threatboot.com 微步威胁情报平台  </li>
+<li>ti.360.cn 360威胁情报平台  </li>
+<li>tj-un.com 天际友盟平台</li>
+</ul>
+</li>
+</ul>
+<h2 id="基于信息学与统计学的检测"><a href="#基于信息学与统计学的检测" class="headerlink" title="基于信息学与统计学的检测"></a>基于信息学与统计学的检测</h2><ul>
+<li>基于信息熵的检测</li>
+<li>基于隐式马尔科夫模型检测</li>
+</ul>
+<p><img src="/post/19ce5f52/markov.png"></p>
+<h2 id="基于AI的检测"><a href="#基于AI的检测" class="headerlink" title="基于AI的检测"></a>基于AI的检测</h2><ul>
+<li>基于深度学习<ul>
+<li>LSTM网络</li>
+<li>GAN网络</li>
+</ul>
+</li>
+</ul>
+<p>深度学习模型通过一个神经网络对已知的DGA域名和正常域名进行学习，从而获得一个鉴别DGA域名的分类器，深度学习模型解释性较低，难于调试，但是较传统模型效果更好，故而也有很多产品使用此方法。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://data.netlab.360.com/dga/">https://data.netlab.360.com/dga/</a><br><a target="_blank" rel="noopener" href="https://bin.re/tag/dga/">https://bin.re/tag/dga/</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Hardworking666/article/details/123422221">https://blog.csdn.net/Hardworking666/article/details/123422221</a><br><a target="_blank" rel="noopener" href="https://github.com/baderj/domain_generation_algorithms">https://github.com/baderj/domain_generation_algorithms</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/whatday/article/details/114690030">https://blog.csdn.net/whatday/article/details/114690030</a></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">phrara</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/post/19ce5f52/">http://example.com/post/19ce5f52/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/DGA/">DGA</a></div><div class="post_share"><div class="social-share" data-image="/img/c3.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/post/9c057035/"><img class="next-cover" src="/img/c5.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">带状疱疹病史</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/photo.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">phrara</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/phrara/"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">到达世界最高城!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#C2-amp-DGA"><span class="toc-number">1.1.</span> <span class="toc-text">C2 &amp; DGA</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DGA%E5%9F%9F%E5%90%8D%E5%88%86%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">DGA域名分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E7%A7%8D%E5%AD%90%E8%BF%9B%E8%A1%8C%E5%88%86%E7%B1%BB"><span class="toc-number">2.1.</span> <span class="toc-text">按照种子进行分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E7%94%9F%E6%88%90%E7%AE%97%E6%B3%95%E8%BF%9B%E8%A1%8C%E5%88%86%E7%B1%BB"><span class="toc-number">2.2.</span> <span class="toc-text">按照生成算法进行分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.3.</span> <span class="toc-text">举例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Orchard"><span class="toc-number">2.3.1.</span> <span class="toc-text">Orchard</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DGA%E5%9F%9F%E5%90%8D%E6%A3%80%E6%B5%8B"><span class="toc-number">3.</span> <span class="toc-text">DGA域名检测</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E9%BB%91%E5%90%8D%E5%8D%95%E7%9A%84%E6%A3%80%E6%B5%8B%E4%B8%8E%E9%98%B2%E6%8A%A4"><span class="toc-number">3.1.</span> <span class="toc-text">基于黑名单的检测与防护</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%AC%AC%E4%B8%89%E6%96%B9%E4%BF%A1%E6%81%AF%E7%9A%84%E6%A3%80%E6%B5%8B"><span class="toc-number">3.2.</span> <span class="toc-text">基于第三方信息的检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E4%BF%A1%E6%81%AF%E5%AD%A6%E4%B8%8E%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E6%A3%80%E6%B5%8B"><span class="toc-number">3.3.</span> <span class="toc-text">基于信息学与统计学的检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8EAI%E7%9A%84%E6%A3%80%E6%B5%8B"><span class="toc-number">3.4.</span> <span class="toc-text">基于AI的检测</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/post/19ce5f52/" title="DGA域名"><img src="/img/c3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DGA域名"/></a><div class="content"><a class="title" href="/post/19ce5f52/" title="DGA域名">DGA域名</a><time datetime="2023-04-12T15:10:39.302Z" title="Created 2023-04-12 23:10:39">2023-04-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/9c057035/" title="带状疱疹病史"><img src="/img/c5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="带状疱疹病史"/></a><div class="content"><a class="title" href="/post/9c057035/" title="带状疱疹病史">带状疱疹病史</a><time datetime="2023-04-10T10:14:32.521Z" title="Created 2023-04-10 18:14:32">2023-04-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/8e372fbf/" title="K8s(1)"><img src="/img/c6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="K8s(1)"/></a><div class="content"><a class="title" href="/post/8e372fbf/" title="K8s(1)">K8s(1)</a><time datetime="2023-03-27T14:32:35.961Z" title="Created 2023-03-27 22:32:35">2023-03-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/7fb3659b/" title="docker学习"><img src="/img/c3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker学习"/></a><div class="content"><a class="title" href="/post/7fb3659b/" title="docker学习">docker学习</a><time datetime="2023-03-14T10:15:04.071Z" title="Created 2023-03-14 18:15:04">2023-03-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/3e9a9d51/" title="IPFS Windows"><img src="/img/c2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="IPFS Windows"/></a><div class="content"><a class="title" href="/post/3e9a9d51/" title="IPFS Windows">IPFS Windows</a><time datetime="2022-10-09T14:17:50.000Z" title="Created 2022-10-09 22:17:50">2022-10-09</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/c3.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By phrara</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><div class="aplayer no-destroy" data-id="3013413533" data-server="tencent" data-type="playlist" data-fixed="true" data-autoplay="true"></div><script id="canvas_nest" defer="defer" color="248,245,214" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="/img/mov.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://unpkg.zhimg.com/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end --></body></html>

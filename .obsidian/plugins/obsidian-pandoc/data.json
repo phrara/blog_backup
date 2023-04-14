@@ -1,0 +1,15 @@
+{
+  "showCLICommands": false,
+  "addExtensionsToInternalLinks": "html",
+  "injectAppCSS": "light",
+  "injectThemeCSS": false,
+  "customCSSFile": null,
+  "displayYAMLFrontmatter": false,
+  "linkStrippingBehaviour": "text",
+  "highDPIDiagrams": true,
+  "pandoc": "D:\\Typora\\pandoc-2.11.0.2\\pandoc-2.11.0.2\\pandoc.exe",
+  "pdflatex": null,
+  "outputFolder": "C:\\Users\\lenovo\\Desktop",
+  "extraArguments": "--reference-doc=D:/academy/templates_refine.docx",
+  "exportFrom": "md"
+}
